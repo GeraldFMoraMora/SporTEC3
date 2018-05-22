@@ -30,7 +30,7 @@ public class PerfilClass extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_perfil);
+        setContentView(R.layout.activity_perfil);
 
         this.mNombreEdit = (EditText) findViewById(R.id.usuario_nombre);
         this.mCorreoEdit = (EditText) findViewById(R.id.usuario_correo);

@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.sportec.sportec.R;
+import sportec3.PantallaPrincipal.R;
 
 /**
  * Created by GeraldMM on 05/05/2018.

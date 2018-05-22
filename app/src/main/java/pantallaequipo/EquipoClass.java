@@ -26,7 +26,7 @@ public class EquipoClass extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_equipo);
+        setContentView(R.layout.activity_equipo);
 
         this.mId = getIntent().getLongExtra("id", 0);
 

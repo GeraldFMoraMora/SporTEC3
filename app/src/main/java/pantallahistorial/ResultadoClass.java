@@ -32,7 +32,7 @@ public class ResultadoClass extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_resultado);
+        setContentView(R.layout.activity_resultado);
 
         ArrayList<ResultadoModel> list= new ArrayList();
         list.add(new ResultadoModel(ResultadoModel.IMAGE_TYPE,"Barcelona - Real Madrid", R.mipmap.facebook_icon,"1-1"));

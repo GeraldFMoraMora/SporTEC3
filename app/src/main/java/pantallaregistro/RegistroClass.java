@@ -26,7 +26,7 @@ public class RegistroClass extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_formulario_resgistro);
+        setContentView(R.layout.activity_resgistro);
 
         this.mNombreEdit = (EditText) findViewById(R.id.usuario_nombre_formulario_registro_textedit);
         this.mCorreoEdit = (EditText) findViewById(R.id.usuario_correo_formulario_registro_textedit);

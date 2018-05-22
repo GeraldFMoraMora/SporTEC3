@@ -35,7 +35,7 @@ public class DeporteClass extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_deporte);
+        setContentView(R.layout.activity_deporte);
 
         this.mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);

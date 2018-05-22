@@ -31,7 +31,7 @@ public class OpcionClass extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_opcion);
+        setContentView(R.layout.activity_opcion);
 
         this.mId = getIntent().getLongExtra("id", 0);
 

@@ -26,7 +26,7 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_session);
+        setContentView(R.layout.activity_session);
 
         this.mCorreoEdit = (EditText) findViewById(R.id.usuario_correo_iniciosession_edittext);
         this.mContrasenaEdit = (EditText) findViewById(R.id.usuario_contrasena_inicio_session_edittext);
