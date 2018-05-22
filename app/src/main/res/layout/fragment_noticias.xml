@@ -1,0 +1,95 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/noticias_foto_fragment_noticias_imageview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/key1" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#880000"
+                    android:paddingLeft="25dp"
+                    android:text="SporTEC"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/noticias_titulo_fragment_noticias_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#880000"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="La sombra de De Gea vuelve a acechar al portero costarricense, apoyado esta semana por Zidane y Florentino"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/background_light"
+                    android:textIsSelectable="true"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="25dp"
+                    android:text="Mayo, 1 de 2018" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:id="@+id/noticia_descripcion_fragment_noticias_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="El día más duro que Keylor Navas vivió como profesional fue vestido del Levante. Ocurrió en su segunda temporada en el club. Media hora antes de un partido en casa, recibió una llamada de emergencia desde Costa Rica. Su madre, trabajadora en un centro para jóvenes con problemas mentales, había recibido una paliza. Un interno casi la mata. El portero encajó la noticia con espanto, aliviado al menos cuando le aseguraron que Sandra estaba fuera de peligro. «Mister, juego», dijo antes de ponerse bajo palos y salvar a su equipo aquella tarde con una actuación de categoría. El guardameta ha sudado cada escalón en su carrera deportiva hasta llegar a la portería del Real Madrid, donde colecciona rosas y cardos sin histerias. «La religión le ayuda mucho», apuntan desde Valdebebas, al mismo tiempo que garantizan que su nivel de entrenamientos esta semana ha sido superior."
+                    android:textAlignment="gravity"
+                    android:textSize="18sp"
+                    android:textStyle="normal" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>
