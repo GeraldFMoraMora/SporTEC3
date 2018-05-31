@@ -101,7 +101,7 @@ public class PerfilClass extends AppCompatActivity implements View.OnClickListen
      */
     private void actualizarUsuario(String idUsuario, String nombreUsuario, String correoUsuario, String pass) {
         Ion.with(this)
-                .load("PUT", "http://192.168.0.15:3000/api/usuario/"+idUsuari)
+                .load("PUT", "http://192.168.0.15:3000/api/usuario/"+idUsuario)
                 //.load("http://192.168.0.15:3000/api/usuario/5b0f2c683785e44211000002")
                 .setBodyParameter("name", nombreUsuario)
                 .setBodyParameter("email", correoUsuario)
