@@ -61,9 +61,7 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
      */
     private void goMainScreen() {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-
     }
 
     public void connectAccount(final String email, final String password) {
@@ -72,11 +70,12 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
                 .getAllUser(new FutureCallback<List<User>>() {
                     @Override
                     public void onCompleted(Exception e, List<User> result) {
-                        System.out.println("@@@@" + result.get(0).getEmail());
+                        System.out.println(result.size());
                         while (contador < result.size()) {
                             if (result.get(contador).getEmail().equals(email)) {
                                 if (result.get(contador).getPass().equals(password)) {
                                     Log.i(" Exito: ", "Sesion iniciada");
+                                    contador=result.size();
                                     goMainScreen();
                                 } else {
                                     Log.e(" Error: ", "Contraseña incorrecta");
@@ -84,13 +83,11 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
                             } else {
                                 contador += 1;
                             }
-                            Log.e(" Error: ", "Cuenta inexistente");
                         }
+                        contador = 0;
+                        Log.e(" Error: ", "Cuenta inexistente");
                     }
                 });
-    }
-
-    private void updateUI() {
     }
 
     /**
