@@ -7,14 +7,31 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.koushikdutta.async.future.FutureCallback;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+import model.Noticia;
+import networking.RESTfulClient;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
     public String mTituloNoticiaDia;
     public String mFotoNoticiaDia;
     public String mDescripcionDia;
+
+    private ImageView mImagenNoticia;
+    private TextView mTituloNoticia;
+
+    private int contador = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +49,35 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        this.mImagenNoticia = (ImageView) findViewById(R.id.noticia_foto_dia_imageview);
+        this.mTituloNoticia = (TextView) findViewById(R.id.noticia_titulo_dia_textview);
 
+        this.noticiaDia();
+    }
+
+    private void noticiaDia() {
+        RESTfulClient
+                .with(getApplicationContext())
+                .getAllNoticias(new FutureCallback<List<Noticia>>() {
+                    @Override
+                    public void onCompleted(Exception e, List<Noticia> result) {
+                        System.out.println(result.size());
+                        while (contador < result.size()) {
+                            if (result.get(contador).getToday()) {
+                                Picasso.get().load(result.get(contador).getPhoto()).into(mImagenNoticia);
+                                mTituloNoticia.setText(result.get(contador).getTitle());
+                                mTituloNoticiaDia = result.get(contador).getTitle();
+                                mFotoNoticiaDia = result.get(contador).getPhoto();
+                                mDescripcionDia = result.get(contador).getDescription();
+                                contador = result.size();
+                            } else {
+                                contador += 1;
+                            }
+                        }
+                        contador = 0;
+                        Log.e(" Error: ", "No existe noticia destacada");
+                    }
+                });
     }
 
     @Override

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
+import pantallasesion.SessionClass;
 import sportec3.PantallaPrincipal.MainActivity;
 import sportec3.PantallaPrincipal.R;
 
@@ -44,7 +45,7 @@ public class RegistroClass extends AppCompatActivity implements View.OnClickList
         switch (view.getId()) {
             case R.id.rigistrar_formulario_registro_button:
                 createAccount(mNombreEdit.getText().toString(), mCorreoEdit.getText().toString(), mContrasenaEdit.getText().toString());
-                startActivity(new Intent(RegistroClass.this, MainActivity.class));
+                startActivity(new Intent(RegistroClass.this, SessionClass.class));
                 break;
             case R.id.cancelar_formulario_registro_textview:
                 break;

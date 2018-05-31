@@ -9,6 +9,10 @@ import com.koushikdutta.ion.Ion;
 
 import java.util.List;
 
+import model.Deporte;
+import model.Equipo;
+import model.Noticia;
+import model.Reto;
 import model.User;
 
 /**
@@ -28,68 +32,60 @@ public class RESTfulClient implements ServerConstants {
 
     public void getDeporteById(FutureCallback<String> callback) {
         Ion.with(this.mApplication)
-                //.load(SERVER+"/api/usuario/5b0e37af94b2d5367e000002")
-                .load(SERVER + "/api/usuarios/")
+                .load(SERVER + "/api/deportes/")
                 .asString()
                 .setCallback(callback);
     }
 
-    public void getAllDeportes(FutureCallback<List<User>> callback) {
+    public void getAllDeportes(FutureCallback<List<Deporte>> callback) {
         Ion.with(this.mApplication)
-                //.load(SERVER+"/api/usuario/5b0e37af94b2d5367e000002")
-                .load(SERVER + "/api/usuarios/")
-                .as(new TypeToken<List<User>>() {
+                .load(SERVER + "/api/deportes/")
+                .as(new TypeToken<List<Deporte>>() {
                 })
                 .setCallback(callback);
     }
 
     public void getEquipoById(FutureCallback<String> callback) {
         Ion.with(this.mApplication)
-                //.load(SERVER+"/api/usuario/5b0e37af94b2d5367e000002")
-                .load(SERVER + "/api/usuarios/")
+                .load(SERVER + "/api/equipos/")
                 .asString()
                 .setCallback(callback);
     }
 
-    public void getAllEquipos(FutureCallback<List<User>> callback) {
+    public void getAllEquipos(FutureCallback<List<Equipo>> callback) {
         Ion.with(this.mApplication)
-                //.load(SERVER+"/api/usuario/5b0e37af94b2d5367e000002")
-                .load(SERVER + "/api/usuarios/")
-                .as(new TypeToken<List<User>>() {
+                .load(SERVER + "/api/equipos/")
+                .as(new TypeToken<List<Equipo>>() {
                 })
                 .setCallback(callback);
     }
 
     public void getNoticiaById(FutureCallback<String> callback) {
         Ion.with(this.mApplication)
-                //.load(SERVER+"/api/usuario/5b0e37af94b2d5367e000002")
-                .load(SERVER + "/api/usuarios/")
+                .load(SERVER + "/api/noticias/")
                 .asString()
                 .setCallback(callback);
     }
 
-    public void getAllNoticias(FutureCallback<List<User>> callback) {
+    public void getAllNoticias(FutureCallback<List<Noticia>> callback) {
         Ion.with(this.mApplication)
-                //.load(SERVER+"/api/usuario/5b0e37af94b2d5367e000002")
-                .load(SERVER + "/api/usuarios/")
-                .as(new TypeToken<List<User>>() {
+                .load(SERVER + "/api/noticias/")
+                .as(new TypeToken<List<Noticia>>() {
                 })
                 .setCallback(callback);
     }
 
     public void getRetoById(FutureCallback<String> callback) {
         Ion.with(this.mApplication)
-                //.load(SERVER+"/api/usuario/5b0e37af94b2d5367e000002")
-                .load(SERVER + "/api/usuarios/")
+                .load(SERVER + "/api/retos/")
                 .asString()
                 .setCallback(callback);
     }
 
-    public void getAllRetos(FutureCallback<List<User>> callback) {
+    public void getAllRetos(FutureCallback<List<Reto>> callback) {
         Ion.with(this.mApplication)
-                //.load(SERVER+"/api/usuario/5b0e37af94b2d5367e000002")
-                .load(SERVER + "/api/usuarios/")
-                .as(new TypeToken<List<User>>() {
+                .load(SERVER + "/api/retos/")
+                .as(new TypeToken<List<Reto>>() {
                 })
                 .setCallback(callback);
     }
