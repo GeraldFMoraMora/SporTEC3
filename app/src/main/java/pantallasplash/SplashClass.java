@@ -6,11 +6,10 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
 
-
 import java.util.Timer;
 import java.util.TimerTask;
 
-import sportec3.PantallaPrincipal.MainActivity;
+import pantallasesion.SessionClass;
 import sportec3.PantallaPrincipal.R;
 
 public class SplashClass extends Activity {
@@ -34,7 +33,7 @@ public class SplashClass extends Activity {
             public void run() {
 
                 // Start the next activity
-                Intent mainIntent = new Intent().setClass(SplashClass.this, MainActivity.class);
+                Intent mainIntent = new Intent().setClass(SplashClass.this, SessionClass.class);
                 startActivity(mainIntent);
 
                 // Close the activity so the user won't able to go back this

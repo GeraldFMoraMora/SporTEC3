@@ -3,8 +3,12 @@ package pantallaregistro;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 
 import sportec3.PantallaPrincipal.MainActivity;
 import sportec3.PantallaPrincipal.R;
@@ -13,7 +17,7 @@ import sportec3.PantallaPrincipal.R;
  * Created by GeraldMM on 10/05/2018.
  */
 
-public class RegistroClass extends AppCompatActivity implements View.OnClickListener{
+public class RegistroClass extends AppCompatActivity implements View.OnClickListener {
 
     private EditText mNombreEdit;
     private EditText mCorreoEdit;
@@ -34,12 +38,13 @@ public class RegistroClass extends AppCompatActivity implements View.OnClickList
 
 
     }
+
     @Override
-    public void onClick(View view){
-        switch (view.getId()){
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.rigistrar_formulario_registro_button:
-                createAccount(mCorreoEdit.getText().toString(),mContrasenaEdit.getText().toString());
-                startActivity(new Intent(RegistroClass.this,MainActivity.class));
+                createAccount(mNombreEdit.getText().toString(), mCorreoEdit.getText().toString(), mContrasenaEdit.getText().toString());
+                startActivity(new Intent(RegistroClass.this, MainActivity.class));
                 break;
             case R.id.cancelar_formulario_registro_textview:
                 break;
@@ -49,34 +54,30 @@ public class RegistroClass extends AppCompatActivity implements View.OnClickList
     /**
      * Metodo para crear una cuenta, recive el correo y la contrasena, con eso es capaz de crear una cuenta en
      * el Auth de Firebase.
+     *
      * @param email
      * @param password
      */
-    public void createAccount(String email, String password){
-
-    }
-    /**
-     * Metodo para guardar un usuario en la base de datos
-     * @param idUsuario
-     * @param nombreUsuario
-     * @param correoUsuario
-     * @param foto
-     */
-    private void guardarUsuario(String idUsuario, String nombreUsuario, String correoUsuario, String foto){
-
+    public void createAccount(String name, String email, String password) {
+        Ion.with(this)
+                .load("http://192.168.0.15:3000/api/usuarios/")
+                .setBodyParameter("name", name)
+                .setBodyParameter("email", email)
+                .setBodyParameter("pass", password)
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        // do stuff with the result or error
+                        Log.e(" Exito: ", "Usuario correctamente creado");
+                    }
+                });
     }
 
     @Override
     public void onStart() {
         super.onStart();
         // Revisa que exista un usuario y actualiza la activity.
-    }
-
-    /**
-     * Metodo que actualiza los elementos de la interfaz.
-     * @param user
-     */
-    private void updateUI() {
     }
 
 

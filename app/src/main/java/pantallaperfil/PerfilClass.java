@@ -3,9 +3,17 @@ package pantallaperfil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+
+import java.util.List;
+
+import model.User;
+import networking.RESTfulClient;
 import sportec3.PantallaPrincipal.MainActivity;
 import sportec3.PantallaPrincipal.R;
 
@@ -19,7 +27,11 @@ public class PerfilClass extends AppCompatActivity implements View.OnClickListen
     private EditText mNombreEdit;
     private EditText mCorreoEdit;
     private EditText mContrasenaEdit;
+
     private String mUserId;
+    private String mUserPass;
+
+    private int contador = 0;
 
     private static final String TAG = "CustomAuthActivity";
     private String mCustomToken;
@@ -42,7 +54,8 @@ public class PerfilClass extends AppCompatActivity implements View.OnClickListen
         switch (view.getId()) {
 
             case R.id.actualizar_formulario_registro_button:
-                //createAccount(mCorreoEdit.getText().toString(),mContrasenaEdit.getText().toString());
+                this.buscarUsuario(mCorreoEdit.getText().toString());
+                actualizarUsuario(mUserId, mCorreoEdit.getText().toString(), mContrasenaEdit.getText().toString(), mUserPass);
                 startActivity(new Intent(PerfilClass.this, MainActivity.class));
                 break;
             case R.id.salir_perfil_textview:
@@ -56,10 +69,26 @@ public class PerfilClass extends AppCompatActivity implements View.OnClickListen
      * el Auth de Firebase.
      *
      * @param email
-     * @param password
      */
-    public void createAccount(String email, String password) {
-
+    public void buscarUsuario(final String email) {
+        RESTfulClient
+                .with(getApplicationContext())
+                .getAllUser(new FutureCallback<List<User>>() {
+                    @Override
+                    public void onCompleted(Exception e, List<User> result) {
+                        System.out.println("@@@@" + result.get(0).getEmail());
+                        while (contador < result.size()) {
+                            if (result.get(contador).getEmail().equals(email)) {
+                                Log.i(" Exito: ", "Cuenta encontrada");
+                                mUserId= result.get(contador).getId();
+                                mUserPass = result.get(contador).getPass();
+                            } else {
+                                contador += 1;
+                            }
+                            Log.e(" Error: ", "Cuenta inexistente");
+                        }
+                    }
+                });
     }
 
     /**
@@ -68,9 +97,23 @@ public class PerfilClass extends AppCompatActivity implements View.OnClickListen
      * @param idUsuario
      * @param nombreUsuario
      * @param correoUsuario
-     * @param foto
+     * @param pass
      */
-    private void guardarUsuario(String idUsuario, String nombreUsuario, String correoUsuario, String foto) {
+    private void actualizarUsuario(String idUsuario, String nombreUsuario, String correoUsuario, String pass) {
+        Ion.with(this)
+                .load("PUT", "http://192.168.0.15:3000/api/usuario/"+idUsuari)
+                //.load("http://192.168.0.15:3000/api/usuario/5b0f2c683785e44211000002")
+                .setBodyParameter("name", nombreUsuario)
+                .setBodyParameter("email", correoUsuario)
+                .setBodyParameter("pass", pass)
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        // do stuff with the result or error
+                        Log.e(" Exito: ", "Usuario correctamente actualizado");
+                    }
+                });
     }
 
     @Override
@@ -78,11 +121,4 @@ public class PerfilClass extends AppCompatActivity implements View.OnClickListen
         super.onStart();
     }
 
-    /**
-     * Metodo que actualiza los elementos de la interfaz.
-     *
-     * @param user
-     */
-    private void updateUI() {
-    }
 }

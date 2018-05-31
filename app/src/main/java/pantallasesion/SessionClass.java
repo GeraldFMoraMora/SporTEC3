@@ -3,9 +3,16 @@ package pantallasesion;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.koushikdutta.async.future.FutureCallback;
+
+import java.util.List;
+
+import model.User;
+import networking.RESTfulClient;
 import pantallaregistro.RegistroClass;
 import sportec3.PantallaPrincipal.ConstantInterface;
 import sportec3.PantallaPrincipal.MainActivity;
@@ -18,9 +25,10 @@ import sportec3.PantallaPrincipal.R;
 
 public class SessionClass extends AppCompatActivity implements ConstantInterface {
 
-    private EditText mNombreEdit;
     private EditText mCorreoEdit;
     private EditText mContrasenaEdit;
+
+    private int contador = 0;
 
     private static final String TAG = "CustomAuthActivity";
 
@@ -58,8 +66,28 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
 
     }
 
-    public void connectAccount(String email, String password) {
-
+    public void connectAccount(final String email, final String password) {
+        RESTfulClient
+                .with(getApplicationContext())
+                .getAllUser(new FutureCallback<List<User>>() {
+                    @Override
+                    public void onCompleted(Exception e, List<User> result) {
+                        System.out.println("@@@@" + result.get(0).getEmail());
+                        while (contador < result.size()) {
+                            if (result.get(contador).getEmail().equals(email)) {
+                                if (result.get(contador).getPass().equals(password)) {
+                                    Log.i(" Exito: ", "Sesion iniciada");
+                                    goMainScreen();
+                                } else {
+                                    Log.e(" Error: ", "Contraseña incorrecta");
+                                }
+                            } else {
+                                contador += 1;
+                            }
+                            Log.e(" Error: ", "Cuenta inexistente");
+                        }
+                    }
+                });
     }
 
     private void updateUI() {
@@ -85,7 +113,6 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
         switch (view.getId()) {
             case R.id.iniciar_session_buttom:
                 connectAccount(mCorreoEdit.getText().toString(), mContrasenaEdit.getText().toString());
-                //startActivity(new Intent(SessionLayout.this,MainActivity.class));
                 break;
             case R.id.registrarse_session_buttom:
                 startActivity(new Intent(SessionClass.this, RegistroClass.class));

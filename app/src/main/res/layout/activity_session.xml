@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".layouts.SessionLayout">
+    tools:context=".MainActivity">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -115,45 +115,6 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="31dp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:text="Iniciar sesión con:"
-                    android:textAlignment="center" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <com.google.android.gms.common.SignInButton
-                        android:id="@+id/signInGoogleButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true" />
-
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </RelativeLayout>
 
     </LinearLayout>
 
