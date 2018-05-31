@@ -75,7 +75,7 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
                             if (result.get(contador).getEmail().equals(email)) {
                                 if (result.get(contador).getPass().equals(password)) {
                                     Log.i(" Exito: ", "Sesion iniciada");
-                                    contador=result.size();
+                                    contador = result.size();
                                     goMainScreen();
                                 } else {
                                     Log.e(" Error: ", "Contraseña incorrecta");
