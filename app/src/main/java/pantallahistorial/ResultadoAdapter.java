@@ -9,8 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
+import model.Resultado;
+import pantallaequipo.MiembroAdapter;
 import sportec3.PantallaPrincipal.R;
 
 /**
@@ -27,14 +31,16 @@ public class ResultadoAdapter extends RecyclerView.Adapter {
 
         private TextView titulo;
         private TextView mMarcador;
-        private ImageView mImage;
+        private ImageView mImage1;
+        private ImageView mImage2;
 
         public ImageTypeViewHolder(View itemView) {
             super(itemView);
 
             this.titulo = (TextView) itemView.findViewById(R.id.textview_resultado_partido);
             this.mMarcador = (TextView) itemView.findViewById(R.id.textview_resultado_marcador);
-            this.mImage = (ImageView) itemView.findViewById(R.id.imageview_resultado_foto);
+            this.mImage1 = (ImageView) itemView.findViewById(R.id.imageview_resultado_foto2);
+            this.mImage2 = (ImageView) itemView.findViewById(R.id.imageview_resultado_foto);
         }
     }
 
@@ -77,7 +83,8 @@ public class ResultadoAdapter extends RecyclerView.Adapter {
                 case ResultadoModel.IMAGE_TYPE:
                     ((ImageTypeViewHolder) holder).titulo.setText(object.mPartido);
                     ((ImageTypeViewHolder) holder).mMarcador.setText(object.mMarcador);
-                    ((ImageTypeViewHolder) holder).mImage.setImageResource(object.data);
+                    Picasso.get().load(object.mFoto1).into(((ResultadoAdapter.ImageTypeViewHolder) holder).mImage1);
+                    Picasso.get().load(object.mFoto2).into(((ResultadoAdapter.ImageTypeViewHolder) holder).mImage2);
                     break;
             }
         }

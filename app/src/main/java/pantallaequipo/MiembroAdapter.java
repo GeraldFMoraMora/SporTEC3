@@ -100,8 +100,6 @@ public class MiembroAdapter extends RecyclerView.Adapter {
             switch (object.type) {
                 case MiembroModel.IMAGE_TYPE:
                     ((ImageTypeViewHolder) holder).titulo.setText(object.text);
-                    Context mContext1 = ((ImageTypeViewHolder) holder).mImage.getContext();
-                    int idFoto = mContext1.getResources().getIdentifier(object.foto, "mipmap", mContext1.getPackageName());
                     Picasso.get().load(object.foto).into(((ImageTypeViewHolder) holder).mImage);
                     break;
             }

@@ -52,7 +52,11 @@ public class ResultadoClass extends AppCompatActivity {
                     public void onCompleted(Exception e, List<Resultado> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            list.add(new ResultadoModel(ResultadoModel.IMAGE_TYPE, result.get(contador).getName(), R.mipmap.facebook_icon, result.get(contador).getResult()));
+                            list.add(new ResultadoModel(ResultadoModel.IMAGE_TYPE,
+                                    result.get(contador).getName(), R.mipmap.facebook_icon,
+                                    result.get(contador).getResult()
+                                    , result.get(contador).getFoto1()
+                                    , result.get(contador).getFoto2()));
                             contador += 1;
                         }
                         contador = 0;
