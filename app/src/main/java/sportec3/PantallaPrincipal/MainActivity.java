@@ -29,13 +29,15 @@ import java.util.List;
 
 import model.Noticia;
 import networking.RESTfulClient;
+import pantallabusqueda.BusquedaClass;
 import pantalladeporte.DeporteClass;
-import pantallaequipo.EquipoClass;
 import pantallaequipo.ListaEquipoClass;
 import pantallahistorial.ResultadoClass;
 import pantallanoticia.NoticiaFragment;
 import pantallanoticia.NoticiaMainAdapter;
 import pantallanoticia.NoticiaMainModel;
+import pantallaperfil.PerfilClass;
+import pantallasesion.SessionClass;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,12 +54,18 @@ public class MainActivity extends AppCompatActivity
     private ArrayList<NoticiaMainModel> mList;
 
     private ImageView mLogoNav;
+
     private CardView mCardView;
+
+    private String mEmailUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.mEmailUser = getIntent().getStringExtra("email");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -138,7 +146,7 @@ public class MainActivity extends AppCompatActivity
                                 System.out.println(result.size());
                                 while (contador < result.size()) {
                                     if (contador == position) {
-                                        Toast.makeText(getApplicationContext(), result.get(contador).getId(), Toast.LENGTH_SHORT).show();
+
                                         mTituloNoticia.setText(result.get(contador).getTitle());
                                         mTituloNoticiaDia = result.get(contador).getTitle();
                                         mFotoNoticiaDia = result.get(contador).getPhoto();
@@ -214,7 +222,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_search) {
+            Intent busquedaS = new Intent(this, BusquedaClass.class);
+            startActivity(busquedaS);
             return true;
         }
 
@@ -227,28 +237,34 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_deportes) {
             // Handle the camera action
             Intent deporteS = new Intent(this, DeporteClass.class);
             startActivity(deporteS);
-        } else if (id == R.id.nav_gallery) {
-            Intent equipoS = new Intent(this, EquipoClass.class);
-            startActivity(equipoS);
+        } else if (id == R.id.nav_perfil) {
+            Intent perfilS = new Intent(this, PerfilClass.class);
+            perfilS.putExtra("email",this.mEmailUser);
+            startActivity(perfilS);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_resultados) {
             Intent resultadoS = new Intent(this, ResultadoClass.class);
             startActivity(resultadoS);
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_noticias) {
             Intent noticiaS = new Intent(this, MainActivity.class);
             startActivity(noticiaS);
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_equipos) {
             Intent listaEquipoS = new Intent(this, ListaEquipoClass.class);
             startActivity(listaEquipoS);
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_search) {
+            Intent busquedaS = new Intent(this, BusquedaClass.class);
+            startActivity(busquedaS);
 
+        } else if (id == R.id.nav_cerrar) {
+            Intent sesionS = new Intent(this, SessionClass.class);
+            startActivity(sesionS);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -28,25 +28,52 @@ public class PerfilClass extends AppCompatActivity implements View.OnClickListen
     private EditText mCorreoEdit;
     private EditText mContrasenaEdit;
 
+    private String mUserEmail;
     private String mUserId;
     private String mUserPass;
 
     private int contador = 0;
 
     private static final String TAG = "CustomAuthActivity";
-    private String mCustomToken;
 
-    private EditText nombreUsuario1;
-    private EditText correoUsuario1;
+    private String mUserToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
+        this.mUserEmail = getIntent().getStringExtra("email");
+
         this.mNombreEdit = (EditText) findViewById(R.id.usuario_nombre);
         this.mCorreoEdit = (EditText) findViewById(R.id.usuario_correo);
         this.mContrasenaEdit = (EditText) findViewById(R.id.usuario_contrasena);
+
+        RESTfulClient
+                .with(getApplicationContext())
+                .getAllUser(new FutureCallback<List<User>>() {
+                    @Override
+                    public void onCompleted(Exception e, List<User> result) {
+                        System.out.println(result.size());
+                        while (contador < result.size()) {
+                            if (result.get(contador).getEmail().equals(mUserEmail)) {
+                                mNombreEdit.setText(result.get(contador).getName());
+                                mUserId = result.get(contador).getName();
+                                mCorreoEdit.setText(mUserEmail);
+                                mContrasenaEdit.setText(result.get(contador).getPass());
+                                mUserPass = result.get(contador).getPass();
+                                mUserToken = result.get(contador).getId();
+                                System.out.println(mUserToken);
+                                contador = result.size();
+                            } else {
+                                contador += 1;
+                            }
+                        }
+                        contador = 0;
+                        Log.e(" Error: ", "Cuenta inexistente");
+                    }
+                });
+        this.buscarUsuario(mCorreoEdit.getText().toString());
 
     }
 
@@ -54,8 +81,7 @@ public class PerfilClass extends AppCompatActivity implements View.OnClickListen
         switch (view.getId()) {
 
             case R.id.actualizar_formulario_registro_button:
-                this.buscarUsuario(mCorreoEdit.getText().toString());
-                actualizarUsuario(mUserId, mCorreoEdit.getText().toString(), mContrasenaEdit.getText().toString(), mUserPass);
+                actualizarUsuario(mUserEmail, mUserPass);
                 startActivity(new Intent(PerfilClass.this, MainActivity.class));
                 break;
             case R.id.salir_perfil_textview:
@@ -86,7 +112,6 @@ public class PerfilClass extends AppCompatActivity implements View.OnClickListen
                             } else {
                                 contador += 1;
                             }
-                            Log.e(" Error: ", "Cuenta inexistente");
                         }
                     }
                 });
@@ -95,16 +120,14 @@ public class PerfilClass extends AppCompatActivity implements View.OnClickListen
     /**
      * Metodo para guardar un usuario en la base de datos
      *
-     * @param idUsuario
-     * @param nombreUsuario
      * @param correoUsuario
      * @param pass
      */
-    private void actualizarUsuario(String idUsuario, String nombreUsuario, String correoUsuario, String pass) {
+    private void actualizarUsuario(String correoUsuario, String pass) {
+        mUserId = mNombreEdit.getText().toString();
         Ion.with(this)
-                .load("PUT", "http://192.168.0.15:3000/api/usuario/" + idUsuario)
-                //.load("http://192.168.0.15:3000/api/usuario/5b0f2c683785e44211000002")
-                .setBodyParameter("name", nombreUsuario)
+                .load("PUT", "http://192.168.0.15:3000/api/usuario/" + mUserToken)
+                .setBodyParameter("name", mUserId)
                 .setBodyParameter("email", correoUsuario)
                 .setBodyParameter("pass", pass)
                 .asString()

@@ -5,33 +5,39 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_resultados"
+            android:icon="@drawable/round_filter_1_black_18dp"
+            android:title="Resultados" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_equipos"
+            android:icon="@drawable/round_group_work_black_18dp"
+            android:title="Equipos" />
+    </group>
+    <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_deportes"
+            android:icon="@drawable/round_fitness_center_black_18dp"
+            android:title="Deportes" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_search"
+            android:icon="@drawable/round_search_black_18dp"
+            android:title="Busqueda" />
+        <item
+            android:id="@+id/nav_noticias"
+            android:icon="@drawable/round_ballot_black_18dp"
+            android:title="Noticias" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Sesión">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_perfil"
+                android:icon="@drawable/round_account_circle_black_18dp"
+                android:title="Perfil" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_cerrar"
+                android:icon="@drawable/round_power_settings_new_black_18dp"
+                android:title="Cerrar Sesión" />
         </menu>
     </item>
 

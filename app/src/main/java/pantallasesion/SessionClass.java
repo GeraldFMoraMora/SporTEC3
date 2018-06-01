@@ -59,8 +59,9 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
     /**
      * Metodo que me envia a la pagina principal de la app una vez hay un usuario conectado
      */
-    private void goMainScreen() {
+    private void goMainScreen(String email) {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("email",email);
         startActivity(intent);
     }
 
@@ -70,13 +71,13 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
                 .getAllUser(new FutureCallback<List<User>>() {
                     @Override
                     public void onCompleted(Exception e, List<User> result) {
-                        System.out.println(result.size());
+
                         while (contador < result.size()) {
                             if (result.get(contador).getEmail().equals(email)) {
                                 if (result.get(contador).getPass().equals(password)) {
+                                    goMainScreen(result.get(contador).getEmail().toString());
                                     Log.i(" Exito: ", "Sesion iniciada");
                                     contador = result.size();
-                                    goMainScreen();
                                 } else {
                                     Log.e(" Error: ", "Contraseña incorrecta");
                                 }
