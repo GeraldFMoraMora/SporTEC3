@@ -8,13 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import model.Resultado;
-import pantallaequipo.MiembroAdapter;
 import sportec3.PantallaPrincipal.R;
 
 /**

@@ -42,7 +42,7 @@ public class EquipoClass extends AppCompatActivity {
 
         this.mId = getIntent().getLongExtra("id", 0);
 
-        System.out.println("@@@@@@"+mId.toString());
+        System.out.println("@@@@@@" + mId.toString());
 
         this.mNombreEquipoView = (TextView) findViewById(R.id.nombre_equipo_layout_equipo_textview);
         this.setmNombreDeporte();
@@ -73,11 +73,6 @@ public class EquipoClass extends AppCompatActivity {
                         Log.e(" Error: ", "Cuenta inexistente");
                     }
                 });
-
-        //list.add(new MiembroModel(MiembroModel.IMAGE_TYPE,"Messi Bolaños",R.mipmap.messi));
-        //list.add(new MiembroModel(MiembroModel.IMAGE_TYPE,"Mia Kalifa",R.mipmap.mia));
-        //list.add(new MiembroModel(MiembroModel.IMAGE_TYPE,"Tonny Tun Tun",R.mipmap.tony));
-        //list.add(new MiembroModel(MiembroModel.IMAGE_TYPE,"Hi again. Another cool image here. Which one is better?",R.mipmap.grid3));
 
     }
 

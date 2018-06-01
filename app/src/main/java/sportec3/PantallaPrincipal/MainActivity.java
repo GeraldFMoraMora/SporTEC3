@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity
                             public void onCompleted(Exception e, List<Noticia> result) {
                                 System.out.println(result.size());
                                 while (contador < result.size()) {
-                                    if (String.valueOf(result.get(contador).getId().equals(String.valueOf(position)))=="true") {
+                                    if (String.valueOf(result.get(contador).getId().equals(String.valueOf(position))) == "true") {
                                         getSupportFragmentManager()
                                                 .beginTransaction()
                                                 .replace(R.id.main_activity_fragment,

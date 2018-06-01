@@ -11,7 +11,6 @@ import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
 import pantallasesion.SessionClass;
-import sportec3.PantallaPrincipal.MainActivity;
 import sportec3.PantallaPrincipal.R;
 
 /**

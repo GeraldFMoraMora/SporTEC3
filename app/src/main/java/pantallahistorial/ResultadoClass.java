@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Resultado;
-import model.User;
 import networking.RESTfulClient;
 import sportec3.PantallaPrincipal.R;
 
