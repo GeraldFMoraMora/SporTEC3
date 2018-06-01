@@ -73,7 +73,6 @@ public class EquipoClass extends AppCompatActivity {
                         Log.e(" Error: ", "Cuenta inexistente");
                     }
                 });
-
     }
 
     /**
