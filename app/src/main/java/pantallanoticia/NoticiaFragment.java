@@ -78,14 +78,6 @@ public class NoticiaFragment extends Fragment {
         mTituloNoticia.setText(mTituloNoticiaDia);
         mDescripcionNoticia.setText(mDescripcionDia);
         Picasso.get().load(mFotoNoticiaDia).into(mImagenNoticia);
-        /**view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-        @Override public void onClick(View view) {
-        if (mListener != null) {
-        mRegistro.setAge(mRegistro.getAge() + 1);
-        mListener.onClickButton(mRegistro);
-        }
-        }
-        });**/
 
         return view;
     }
@@ -95,9 +87,6 @@ public class NoticiaFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
         }
     }
 

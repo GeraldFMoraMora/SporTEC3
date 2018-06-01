@@ -8,12 +8,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.koushikdutta.async.future.FutureCallback;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Resultado;
+import model.User;
+import networking.RESTfulClient;
 import sportec3.PantallaPrincipal.R;
 
 /**
@@ -29,18 +36,31 @@ public class ResultadoClass extends AppCompatActivity {
 
     private ImageView mImagenNoticia;
     private TextView MTituloNoticia;
+
+    private int contador = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultado);
 
-        ArrayList<ResultadoModel> list= new ArrayList();
-        list.add(new ResultadoModel(ResultadoModel.IMAGE_TYPE,"Barcelona - Real Madrid", R.mipmap.facebook_icon,"1-1"));
-        list.add(new ResultadoModel(ResultadoModel.IMAGE_TYPE,"LDA - San Jose",R.mipmap.facebook_icon,"5-1"));
-        list.add(new ResultadoModel(ResultadoModel.IMAGE_TYPE,"PZ - Limon FC",R.mipmap.facebook_icon,"3-2"));
-        list.add(new ResultadoModel(ResultadoModel.IMAGE_TYPE,"Hediano - Saprisa",R.mipmap.facebook_icon,"0-0"));
+        final ArrayList<ResultadoModel> list = new ArrayList();
+        RESTfulClient
+                .with(getApplicationContext())
+                .getAllResultados(new FutureCallback<List<Resultado>>() {
+                    @Override
+                    public void onCompleted(Exception e, List<Resultado> result) {
+                        System.out.println(result.size());
+                        while (contador < result.size()) {
+                            list.add(new ResultadoModel(ResultadoModel.IMAGE_TYPE, result.get(contador).getName(), R.mipmap.facebook_icon, result.get(contador).getResult()));
+                            contador += 1;
+                        }
+                        contador = 0;
+                        Log.e(" Error: ", "Cuenta inexistente");
+                    }
+                });
 
-        ResultadoAdapter adapter = new ResultadoAdapter(list,this);
+        ResultadoAdapter adapter = new ResultadoAdapter(list, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, OrientationHelper.VERTICAL, false);
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_resultado);

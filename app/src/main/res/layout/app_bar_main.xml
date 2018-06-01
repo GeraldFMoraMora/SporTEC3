@@ -62,7 +62,7 @@
                     android:background="@color/background_footer"
                     android:maxLines="1"
                     android:padding="16dp"
-                    android:text="Keilor Navas llega a sus 36 años y se siente ya anciano"
+                    android:text="Keilor Navas llega a sus 36 años y se siente ya cansado"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                     android:textColor="@android:color/white" />
 

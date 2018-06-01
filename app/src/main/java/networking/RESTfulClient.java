@@ -12,6 +12,7 @@ import java.util.List;
 import model.Deporte;
 import model.Equipo;
 import model.Noticia;
+import model.Resultado;
 import model.Reto;
 import model.User;
 
@@ -71,6 +72,21 @@ public class RESTfulClient implements ServerConstants {
         Ion.with(this.mApplication)
                 .load(SERVER + "/api/noticias/")
                 .as(new TypeToken<List<Noticia>>() {
+                })
+                .setCallback(callback);
+    }
+
+    public void getResultadoById(String urlk, FutureCallback<String> callback) {
+        Ion.with(this.mApplication)
+                .load(SERVER + "/api/resultado/" + urlk)
+                .asString()
+                .setCallback(callback);
+    }
+
+    public void getAllResultados(FutureCallback<List<Resultado>> callback) {
+        Ion.with(this.mApplication)
+                .load(SERVER + "/api/resultados/")
+                .as(new TypeToken<List<Resultado>>() {
                 })
                 .setCallback(callback);
     }
