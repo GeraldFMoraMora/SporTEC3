@@ -18,7 +18,7 @@ import sportec3.PantallaPrincipal.R;
  * Created by GeraldMM on 05/05/2018.
  */
 
-public class MiembroAdapter extends RecyclerView.Adapter {
+public class EquipoAdapter extends RecyclerView.Adapter {
     private ArrayList<EquipoModel> dataSet;
     Context mContext;
     int total_types;
@@ -32,8 +32,8 @@ public class MiembroAdapter extends RecyclerView.Adapter {
         public ImageTypeViewHolder(View itemView) {
             super(itemView);
 
-            this.titulo = (TextView) itemView.findViewById(R.id.textview_miembro_nombre);
-            this.mImage = (ImageView) itemView.findViewById(R.id.imageview_miembro_foto);
+            this.titulo = (TextView) itemView.findViewById(R.id.textview_equipos);
+            this.mImage = (ImageView) itemView.findViewById(R.id.imageview_equipos_foto);
         }
     }
 
@@ -44,7 +44,7 @@ public class MiembroAdapter extends RecyclerView.Adapter {
      * @param data
      * @param context
      */
-    public MiembroAdapter(ArrayList<EquipoModel> data, Context context) {
+    public EquipoAdapter(ArrayList<EquipoModel> data, Context context) {
         this.dataSet = data;
         this.mContext = context;
         total_types = dataSet.size();
@@ -63,7 +63,7 @@ public class MiembroAdapter extends RecyclerView.Adapter {
         View view;
         switch (viewType) {
             case EquipoModel.IMAGE_TYPE:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_card_miembro_item, parent, false);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_card_equipo_item, parent, false);
                 return new ImageTypeViewHolder(view);
         }
         return null;

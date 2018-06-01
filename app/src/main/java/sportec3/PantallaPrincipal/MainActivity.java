@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.koushikdutta.async.future.FutureCallback;
 import com.squareup.picasso.Picasso;
@@ -30,6 +31,7 @@ import model.Noticia;
 import networking.RESTfulClient;
 import pantalladeporte.DeporteClass;
 import pantallaequipo.EquipoClass;
+import pantallaequipo.ListaEquipoClass;
 import pantallahistorial.ResultadoClass;
 import pantallanoticia.NoticiaFragment;
 import pantallanoticia.NoticiaMainAdapter;
@@ -125,6 +127,9 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onClick(View v, final int position) {
+
+
+                contador = 0;
                 RESTfulClient
                         .with(getApplicationContext())
                         .getAllNoticias(new FutureCallback<List<Noticia>>() {
@@ -132,7 +137,12 @@ public class MainActivity extends AppCompatActivity
                             public void onCompleted(Exception e, List<Noticia> result) {
                                 System.out.println(result.size());
                                 while (contador < result.size()) {
-                                    if (String.valueOf(result.get(contador).getId().equals(String.valueOf(position))) == "true") {
+                                    if (contador == position) {
+                                        Toast.makeText(getApplicationContext(), result.get(contador).getId(), Toast.LENGTH_SHORT).show();
+                                        mTituloNoticia.setText(result.get(contador).getTitle());
+                                        mTituloNoticiaDia = result.get(contador).getTitle();
+                                        mFotoNoticiaDia = result.get(contador).getPhoto();
+                                        mDescripcionDia = result.get(contador).getDescription();
                                         getSupportFragmentManager()
                                                 .beginTransaction()
                                                 .replace(R.id.main_activity_fragment,
@@ -141,6 +151,7 @@ public class MainActivity extends AppCompatActivity
                                                                 result.get(contador).getDescription()))
                                                 .commit()
                                         ;
+                                        contador = result.size();
                                     } else {
                                         contador += 1;
                                     }
@@ -229,8 +240,12 @@ public class MainActivity extends AppCompatActivity
             startActivity(resultadoS);
 
         } else if (id == R.id.nav_manage) {
+            Intent noticiaS = new Intent(this, MainActivity.class);
+            startActivity(noticiaS);
 
         } else if (id == R.id.nav_share) {
+            Intent listaEquipoS = new Intent(this, ListaEquipoClass.class);
+            startActivity(listaEquipoS);
 
         } else if (id == R.id.nav_send) {
 

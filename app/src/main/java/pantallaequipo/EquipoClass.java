@@ -33,7 +33,7 @@ public class EquipoClass extends AppCompatActivity {
 
     private TextView mNombreEquipoView;
 
-    private ArrayList<MiembroModel> list;
+    private ArrayList<EquipoModel> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +58,7 @@ public class EquipoClass extends AppCompatActivity {
                     public void onCompleted(Exception e, List<User> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            list.add(new MiembroModel(MiembroModel.IMAGE_TYPE, result.get(contador)
-                                    .getName(), "https://firebasestorage.googleapis.com/v0/b/sportec-cf3d1.appspot.com/o/usuarios%2Fuserlogo.png?alt=media&token=83b0e50e-9a87-477e-8695-6c60fb23cf64"));
+                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), "https://firebasestorage.googleapis.com/v0/b/sportec-cf3d1.appspot.com/o/usuarios%2Fuserlogo.png?alt=media&token=83b0e50e-9a87-477e-8695-6c60fb23cf64","https://firebasestorage.googleapis.com/v0/b/sportec-cf3d1.appspot.com/o/usuarios%2Fuserlogo.png?alt=media&token=83b0e50e-9a87-477e-8695-6c60fb23cf64"));
                             contador += 1;
                         }
                         contador = 0;

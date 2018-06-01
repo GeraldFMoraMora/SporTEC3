@@ -50,6 +50,7 @@
         <activity android:name="pantallasesion.SessionClass"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
+        <activity android:name="pantallaequipo.ListaEquipoClass" />
     </application>
 
 </manifest>
