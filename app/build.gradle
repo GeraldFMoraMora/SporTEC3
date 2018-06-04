@@ -35,4 +35,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.0'
 
     implementation 'com.google.android.gms:play-services-base:10.+'
+    
+    implementation 'io.socket:socket.io-client:0.8.3'
+    compile 'com.github.nkzawa:socket.io-client:0.5.0'
+    compile 'com.android.support:recyclerview-v7:27.1.1'
 }

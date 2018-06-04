@@ -35,6 +35,10 @@
                 android:icon="@drawable/round_account_circle_black_18dp"
                 android:title="Perfil" />
             <item
+                android:id="@+id/nav_chat"
+                android:icon="@drawable/round_chat_black_18dp"
+                android:title="Chat en vivo" />
+            <item
                 android:id="@+id/nav_cerrar"
                 android:icon="@drawable/round_power_settings_new_black_18dp"
                 android:title="Cerrar Sesión" />

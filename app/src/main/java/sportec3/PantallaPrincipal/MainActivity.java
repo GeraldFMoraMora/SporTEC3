@@ -30,6 +30,7 @@ import java.util.List;
 import model.Noticia;
 import networking.RESTfulClient;
 import pantallabusqueda.BusquedaClass;
+import pantallachat.SocketActivity;
 import pantalladeporte.DeporteClass;
 import pantallaequipo.ListaEquipoClass;
 import pantallahistorial.ResultadoClass;
@@ -269,6 +270,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_cerrar) {
             Intent sesionS = new Intent(this, SessionClass.class);
             startActivity(sesionS);
+        } else if (id == R.id.nav_chat) {
+            Intent chatsS = new Intent(this, SocketActivity.class);
+            startActivity(chatsS);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

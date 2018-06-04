@@ -5,4 +5,15 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_search">Search</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Configuracion</string>
+    <string name="send">Enviar</string>
+    <string name="action_send">Enviado</string>
+    <string name="prompt_message">Mensaje</string>
+    <string name="action_attach">Agragar</string>
+    <string name="action_capture">Capturar imagen</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
