@@ -44,8 +44,8 @@ public class TabActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new RetoFragment(), "Reto");
-        adapter.addFragment(new EquipoActivoFragment(), "Equipos Activos");
+        adapter.addFragment(new RetoFragment(), "Retos");
+        adapter.addFragment(new PosicionesFragment(), "Posiciones");
         viewPager.setAdapter(adapter);
     }
 

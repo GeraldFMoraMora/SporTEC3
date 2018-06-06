@@ -91,9 +91,6 @@ public class LEMainAdapter extends RecyclerView.Adapter implements ConstantInter
             switch (object.type) {
                 case EquipoModel.IMAGE_TYPE:
                     ((LEMainAdapter.ImageTypeViewHolder) holder).titulo.setText(object.text);
-                    /**Picasso.get()
-                            .load(object.foto)
-                            .into(((LEMainAdapter.ImageTypeViewHolder) holder).mImage);**/
                     Picasso
                             .get()
                             .load(object.foto)

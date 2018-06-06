@@ -53,6 +53,7 @@
         <activity android:name="pantallaequipo.ListaEquipoClass" />
         <activity android:name="pantallachat.SocketActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="pantallaretos.TabActivity" />
     </application>
 
 </manifest>

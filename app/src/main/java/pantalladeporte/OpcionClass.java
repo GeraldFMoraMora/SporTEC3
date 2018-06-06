@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import pantallaequipo.EquipoClass;
+import pantallahistorial.ResultadoClass;
+import pantallaretos.TabActivity;
 import sportec3.PantallaPrincipal.R;
 
 
@@ -46,7 +48,7 @@ public class OpcionClass extends AppCompatActivity {
 
                 switch (position) {
                     case 0:
-                        mIntent = new Intent(OpcionClass.this, EquipoClass.class);
+                        mIntent = new Intent(OpcionClass.this, ResultadoClass.class);
                         mIntent.putExtra("id", mId);
                         startActivity(mIntent);
                         break;
@@ -56,7 +58,7 @@ public class OpcionClass extends AppCompatActivity {
                         startActivity(mIntent);
                         break;
                     case 2:
-                        mIntent = new Intent(OpcionClass.this, EquipoClass.class);
+                        mIntent = new Intent(OpcionClass.this, TabActivity.class);
                         mIntent.putExtra("id", mId);
                         startActivity(mIntent);
                         break;

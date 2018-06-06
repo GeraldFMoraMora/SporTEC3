@@ -2,6 +2,7 @@ package pantallahistorial;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,15 +27,7 @@ import sportec3.PantallaPrincipal.R;
  * Created by GeraldMM on 05/05/2018.
  */
 
-public class ResultadoClass extends AppCompatActivity {
-    private GridView mGridView;
-
-    private Intent mScreen;
-    private Toolbar mToolbar;
-    private ImageView mLogoNav;
-
-    private ImageView mImagenNoticia;
-    private TextView MTituloNoticia;
+public class ResultadoClass extends FragmentActivity {
 
     private int contador = 0;
 
