@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -145,7 +144,7 @@ public class BusquedaClass extends AppCompatActivity {
                     public void onCompleted(Exception e, List<Equipo> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            if(result.get(contador).getName().contains(mEntryBusqueda.getText().toString())){
+                            if (result.get(contador).getName().contains(mEntryBusqueda.getText().toString())) {
                                 list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto()));
                             }
                             contador += 1;

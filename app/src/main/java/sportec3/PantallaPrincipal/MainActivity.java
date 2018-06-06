@@ -19,7 +19,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.koushikdutta.async.future.FutureCallback;
 import com.squareup.picasso.Picasso;
@@ -243,7 +242,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(deporteS);
         } else if (id == R.id.nav_perfil) {
             Intent perfilS = new Intent(this, PerfilClass.class);
-            perfilS.putExtra("email",this.mEmailUser);
+            perfilS.putExtra("email", this.mEmailUser);
             startActivity(perfilS);
 
         } else if (id == R.id.nav_resultados) {

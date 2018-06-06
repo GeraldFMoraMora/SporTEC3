@@ -4,8 +4,6 @@ package pantallaretos;
  * Created by GeraldMM on 05/05/2018.
  */
 
-import android.app.Application;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;

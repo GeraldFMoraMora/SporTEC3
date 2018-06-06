@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.IO;
@@ -25,7 +24,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-import sportec3.PantallaPrincipal.MainActivity;
 import sportec3.PantallaPrincipal.R;
 
 /**
@@ -48,13 +46,15 @@ public class ChatFragment extends Fragment {
     private RecyclerView.Adapter mAdapter;
 
     private Socket socket;
+
     {
-        try{
+        try {
             socket = IO.socket("http://192.168.0.15:7000");
-        }catch(URISyntaxException e){
+        } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
     }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -86,7 +86,6 @@ public class ChatFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -106,7 +105,7 @@ public class ChatFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        mAdapter = new MessageAdapter( mMessages);
+        mAdapter = new MessageAdapter(mMessages);
 
     }
 
@@ -131,15 +130,15 @@ public class ChatFragment extends Fragment {
 
     }
 
-    private void sendMessage(){
+    private void sendMessage() {
         String message = mInputMessageView.getText().toString().trim();
         mInputMessageView.setText("");
-        addMessage("Yo: "+message);
+        addMessage("Yo: " + message);
         JSONObject sendText = new JSONObject();
-        try{
-            sendText.put("text",message);
+        try {
+            sendText.put("text", message);
             socket.emit("message", sendText);
-        }catch(JSONException e){
+        } catch (JSONException e) {
 
         }
 
@@ -148,7 +147,7 @@ public class ChatFragment extends Fragment {
     private void addMessage(String message) {
 
         mMessages.add(new Mensaje.Builder(Mensaje.TYPE_MESSAGE).message(message).build());
-        mAdapter = new MessageAdapter( mMessages);
+        mAdapter = new MessageAdapter(mMessages);
         mAdapter.notifyItemInserted(0);
         scrollToBottom();
     }
@@ -157,9 +156,9 @@ public class ChatFragment extends Fragment {
         mMessagesView.scrollToPosition(mAdapter.getItemCount() - 1);
     }
 
-    private Emitter.Listener handleIncomingMessages = new Emitter.Listener(){
+    private Emitter.Listener handleIncomingMessages = new Emitter.Listener() {
         @Override
-        public void call(final Object... args){
+        public void call(final Object... args) {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -167,8 +166,8 @@ public class ChatFragment extends Fragment {
                     String message;
                     try {
                         message = data.getString("text").toString();
-                        Log.e("Mensaje entrante: ",message);
-                        addMessage("Otro usuario: "+message);
+                        Log.e("Mensaje entrante: ", message);
+                        addMessage("Otro usuario: " + message);
 
                     } catch (JSONException e) {
                         // return;

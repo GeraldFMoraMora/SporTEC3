@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Gerald PC on 31/05/2018.
  */
 
-public class Resultado implements Serializable{
+public class Resultado implements Serializable {
     private String name;
     private String result;
     private String team1;

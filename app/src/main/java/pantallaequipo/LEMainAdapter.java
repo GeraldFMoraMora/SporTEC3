@@ -12,7 +12,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import pantallanoticia.NoticiaMainModel;
 import sportec3.PantallaPrincipal.ConstantInterface;
 import sportec3.PantallaPrincipal.R;
 

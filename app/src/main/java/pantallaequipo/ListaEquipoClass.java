@@ -1,6 +1,5 @@
 package pantallaequipo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,7 +8,6 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.koushikdutta.async.future.FutureCallback;
@@ -18,26 +16,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Equipo;
-import model.Noticia;
-import model.User;
 import networking.RESTfulClient;
-import pantallanoticia.NoticiaFragment;
-import pantallanoticia.NoticiaMainAdapter;
-import pantallanoticia.NoticiaMainModel;
 import sportec3.PantallaPrincipal.ConstantInterface;
-import sportec3.PantallaPrincipal.MainActivity;
 import sportec3.PantallaPrincipal.R;
 
 /**
  * Created by Gerald PC on 01/06/2018.
  */
 
-public class ListaEquipoClass extends AppCompatActivity{
+public class ListaEquipoClass extends AppCompatActivity {
     private Long mId;
 
     private int contador = 0;
 
     private ArrayList<EquipoModel> list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +43,7 @@ public class ListaEquipoClass extends AppCompatActivity{
         this.list = new ArrayList();
         this.equiposBanner();
     }
+
     private void equiposBanner() {
         this.list = new ArrayList();
         RESTfulClient
@@ -59,7 +53,7 @@ public class ListaEquipoClass extends AppCompatActivity{
                     public void onCompleted(Exception e, List<Equipo> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(),result.get(contador).getPhoto()));
+                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto()));
                             contador += 1;
                         }
                         contador = 0;

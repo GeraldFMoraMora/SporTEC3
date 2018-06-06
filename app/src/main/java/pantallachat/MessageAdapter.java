@@ -52,6 +52,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mMessageView;
+
         public ViewHolder(View itemView) {
             super(itemView);
             mMessageView = (TextView) itemView.findViewById(R.id.message);
@@ -59,7 +60,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         public void setMessage(String message) {
             if (null == mMessageView) return;
-            if(null == message) return;
+            if (null == message) return;
             mMessageView.setText(message);
         }
     }

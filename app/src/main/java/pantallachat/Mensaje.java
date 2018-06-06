@@ -6,25 +6,32 @@ import android.graphics.Bitmap;
  * Created by geraldportatil on 03/06/18.
  */
 
-public class Mensaje implements XhatConstants{
+public class Mensaje implements XhatConstants {
 
     private int mType;
     public String mMessage;
     private Bitmap mImage;
 
-    public Mensaje() {}
+    public Mensaje() {
+    }
 
     public int getType() {
         return mType;
-    };
+    }
+
+    ;
 
     public String getMessage() {
         return mMessage;
-    };
+    }
+
+    ;
 
     public Bitmap getImage() {
         return mImage;
-    };
+    }
+
+    ;
 
 
     public static class Builder {
