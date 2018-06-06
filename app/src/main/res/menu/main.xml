@@ -6,10 +6,4 @@
         android:icon="@drawable/round_search_black_18dp"
         android:title="@string/action_search"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:icon="@drawable/round_search_black_18dp"
-        android:title="@string/action_search"
-        app:showAsAction="never" />
 </menu>

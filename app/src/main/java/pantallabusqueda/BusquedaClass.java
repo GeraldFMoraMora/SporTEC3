@@ -26,7 +26,6 @@ import model.Noticia;
 import networking.RESTfulClient;
 import pantallaequipo.EquipoModel;
 import pantallaequipo.LEMainAdapter;
-import pantallanoticia.NoticiaFragment;
 import pantallanoticia.NoticiaMainAdapter;
 import pantallanoticia.NoticiaMainModel;
 import sportec3.PantallaPrincipal.ConstantInterface;
@@ -65,17 +64,17 @@ public class BusquedaClass extends AppCompatActivity {
 
         this.mEntryBusqueda = (EditText) findViewById(R.id.busqueda_editText);
 
-        this.realizarbusqueda("");
+        //this.realizarbusqueda();
     }
 
-    public void realizarbusqueda(String palabra) {
-        this.buscarNoticias(palabra);
+    public void realizarbusqueda() {
+        this.buscarNoticias();
 
-        this.buscarDeportes(palabra);
+        this.buscarEquipos();
 
     }
 
-    public void buscarNoticias(String palabra) {
+    public void buscarNoticias() {
         this.mList = new ArrayList();
         RESTfulClient
                 .with(getApplicationContext())
@@ -84,12 +83,17 @@ public class BusquedaClass extends AppCompatActivity {
                     public void onCompleted(Exception e, List<Noticia> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            mList.add(new NoticiaMainModel(NoticiaMainModel.IMAGE_TYPE, result.get(contador).getTitle(), result.get(contador).getPhoto(),
-                                    result.get(contador).getDescription(), result.get(contador).getToday(), result.get(contador).getId()));
+                            if (result.get(contador).getTitle().contains(mEntryBusqueda.getText().toString())) {
+                                mList.add(new NoticiaMainModel(NoticiaMainModel.IMAGE_TYPE, result.get(contador).getTitle(), result.get(contador).getPhoto(),
+                                        result.get(contador).getDescription(), result.get(contador).getToday(), result.get(contador).getId()));
+                            } else if (result.get(contador).getDescription().contains(mEntryBusqueda.getText().toString())) {
+                                mList.add(new NoticiaMainModel(NoticiaMainModel.IMAGE_TYPE, result.get(contador).getTitle(), result.get(contador).getPhoto(),
+                                        result.get(contador).getDescription(), result.get(contador).getToday(), result.get(contador).getId()));
+                            }
+
                             contador += 1;
                         }
                         contador = 0;
-                        Log.e(" Error: ", "No existe noticia destacada");
                     }
                 });
         NoticiaMainAdapter adapter = new NoticiaMainAdapter(mList, BusquedaClass.this, new ConstantInterface() {
@@ -115,7 +119,6 @@ public class BusquedaClass extends AppCompatActivity {
                                     }
                                 }
                                 contador = 0;
-                                Log.e(" Error: ", "Se termino de cargar pantallas");
                             }
                         });
 
@@ -129,10 +132,10 @@ public class BusquedaClass extends AppCompatActivity {
         mRecyclerView.setAdapter(adapter);
     }
 
-    public void buscarEquipos(String palabra) {
+    public void buscarDeportes() {
     }
 
-    public void buscarDeportes(String palabra) {
+    public void buscarEquipos() {
         this.contador = 0;
         this.list = new ArrayList();
         RESTfulClient
@@ -142,11 +145,12 @@ public class BusquedaClass extends AppCompatActivity {
                     public void onCompleted(Exception e, List<Equipo> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto()));
+                            if(result.get(contador).getName().contains(mEntryBusqueda.getText().toString())){
+                                list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto()));
+                            }
                             contador += 1;
                         }
                         contador = 0;
-                        Log.e(" Error: ", "No existe noticia destacada");
                     }
                 });
         LEMainAdapter adapter = new LEMainAdapter(list, BusquedaClass.this, new ConstantInterface() {
@@ -172,7 +176,6 @@ public class BusquedaClass extends AppCompatActivity {
                                     }
                                 }
                                 contador = 0;
-                                Log.e(" Error: ", "Se termino de cargar pantallas");
                             }
                         });
 
@@ -187,13 +190,14 @@ public class BusquedaClass extends AppCompatActivity {
     }
 
 
-    public void buscarUsuarios(String palabra) {
+    public void buscarUsuarios() {
     }
 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.boton_busqueda:
                 this.list = new ArrayList();
+                this.realizarbusqueda();
                 break;
         }
     }
