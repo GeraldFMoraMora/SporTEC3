@@ -25,7 +25,6 @@ import model.Equipo;
 import networking.RESTfulClient;
 import pantallaequipo.EquipoModel;
 import pantallaequipo.LEMainAdapter;
-import pantallaequipo.ListaEquipoClass;
 import sportec3.PantallaPrincipal.ConstantInterface;
 import sportec3.PantallaPrincipal.R;
 
@@ -48,7 +47,7 @@ public class PosicionesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_equipo_activo, container, false);
+        final View view = inflater.inflate(R.layout.fragment_posiciones, container, false);
 
         this.list = new ArrayList();
         RESTfulClient
@@ -65,15 +64,6 @@ public class PosicionesFragment extends Fragment {
                         Log.e(" Error: ", "No existe noticia destacada");
                     }
                 });
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
         LEMainAdapter adapter = new LEMainAdapter(list, view.getContext(), new ConstantInterface() {
 
             @Override
@@ -109,15 +99,6 @@ public class PosicionesFragment extends Fragment {
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(adapter);
-
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
         return view;
     }
 

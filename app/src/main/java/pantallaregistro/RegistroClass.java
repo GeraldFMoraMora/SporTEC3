@@ -47,6 +47,7 @@ public class RegistroClass extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(RegistroClass.this, SessionClass.class));
                 break;
             case R.id.cancelar_formulario_registro_textview:
+                startActivity(new Intent(RegistroClass.this, SessionClass.class));
                 break;
         }
     }

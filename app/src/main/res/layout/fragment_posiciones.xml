@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/editText3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -20,10 +20,11 @@
             android:inputType="textPersonName" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_retos"
+            android:id="@+id/recyclerview_posiciones"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
     </LinearLayout>
 
 </RelativeLayout>
