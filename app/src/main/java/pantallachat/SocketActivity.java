@@ -10,19 +10,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import sportec3.PantallaPrincipal.R;
 
 
 public class SocketActivity extends AppCompatActivity {
 
+    public String mUser = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_socket);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
 
     }
 
@@ -46,11 +47,9 @@ public class SocketActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode,int resultCode,Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
     }
-
 
 
 }

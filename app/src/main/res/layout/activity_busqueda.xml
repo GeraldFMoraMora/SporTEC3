@@ -17,7 +17,7 @@
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/toolbarBusqueda"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
@@ -66,10 +66,6 @@
 
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
         <TextView
             android:id="@+id/textView11"
             android:layout_width="match_parent"
@@ -83,11 +79,32 @@
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_busqueda"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_height="20dp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_equipos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_busqueda"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

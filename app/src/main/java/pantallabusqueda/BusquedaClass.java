@@ -3,15 +3,33 @@ package pantallabusqueda;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.koushikdutta.async.future.FutureCallback;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import model.Equipo;
+import model.Noticia;
+import networking.RESTfulClient;
+import pantallaequipo.EquipoModel;
+import pantallaequipo.LEMainAdapter;
+import pantallanoticia.NoticiaFragment;
+import pantallanoticia.NoticiaMainAdapter;
+import pantallanoticia.NoticiaMainModel;
+import sportec3.PantallaPrincipal.ConstantInterface;
 import sportec3.PantallaPrincipal.R;
 
 /**
@@ -30,18 +48,147 @@ public class BusquedaClass extends AppCompatActivity {
 
     private EditText mEntryBusqueda;
 
-    private ArrayList list;
+    private int contador = 0;
+
+    private ArrayList<NoticiaMainModel> mList;
+    private ArrayList<EquipoModel> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarBusqueda);
+        setSupportActionBar(toolbar);
+
         this.list = new ArrayList();
 
         this.mEntryBusqueda = (EditText) findViewById(R.id.busqueda_editText);
+
+        this.realizarbusqueda("");
     }
 
+    public void realizarbusqueda(String palabra) {
+        this.buscarNoticias(palabra);
+
+        this.buscarDeportes(palabra);
+
+    }
+
+    public void buscarNoticias(String palabra) {
+        this.mList = new ArrayList();
+        RESTfulClient
+                .with(getApplicationContext())
+                .getAllNoticias(new FutureCallback<List<Noticia>>() {
+                    @Override
+                    public void onCompleted(Exception e, List<Noticia> result) {
+                        System.out.println(result.size());
+                        while (contador < result.size()) {
+                            mList.add(new NoticiaMainModel(NoticiaMainModel.IMAGE_TYPE, result.get(contador).getTitle(), result.get(contador).getPhoto(),
+                                    result.get(contador).getDescription(), result.get(contador).getToday(), result.get(contador).getId()));
+                            contador += 1;
+                        }
+                        contador = 0;
+                        Log.e(" Error: ", "No existe noticia destacada");
+                    }
+                });
+        NoticiaMainAdapter adapter = new NoticiaMainAdapter(mList, BusquedaClass.this, new ConstantInterface() {
+
+            @Override
+            public void onClick(View v, final int position) {
+
+
+                contador = 0;
+                RESTfulClient
+                        .with(getApplicationContext())
+                        .getAllNoticias(new FutureCallback<List<Noticia>>() {
+                            @Override
+                            public void onCompleted(Exception e, List<Noticia> result) {
+                                System.out.println(result.size());
+                                while (contador < result.size()) {
+                                    if (contador == position) {
+
+
+                                        contador = result.size();
+                                    } else {
+                                        contador += 1;
+                                    }
+                                }
+                                contador = 0;
+                                Log.e(" Error: ", "Se termino de cargar pantallas");
+                            }
+                        });
+
+            }
+        });
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(BusquedaClass.this, OrientationHelper.VERTICAL, false);
+
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_busqueda);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(adapter);
+    }
+
+    public void buscarEquipos(String palabra) {
+    }
+
+    public void buscarDeportes(String palabra) {
+        this.contador = 0;
+        this.list = new ArrayList();
+        RESTfulClient
+                .with(getApplicationContext())
+                .getAllEquipos(new FutureCallback<List<Equipo>>() {
+                    @Override
+                    public void onCompleted(Exception e, List<Equipo> result) {
+                        System.out.println(result.size());
+                        while (contador < result.size()) {
+                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto()));
+                            contador += 1;
+                        }
+                        contador = 0;
+                        Log.e(" Error: ", "No existe noticia destacada");
+                    }
+                });
+        LEMainAdapter adapter = new LEMainAdapter(list, BusquedaClass.this, new ConstantInterface() {
+
+            @Override
+            public void onClick(View v, final int position) {
+
+
+                contador = 0;
+                RESTfulClient
+                        .with(getApplicationContext())
+                        .getAllEquipos(new FutureCallback<List<Equipo>>() {
+                            @Override
+                            public void onCompleted(Exception e, List<Equipo> result) {
+                                System.out.println(result.size());
+                                while (contador < result.size()) {
+                                    if (contador == position) {
+                                        Toast.makeText(getApplicationContext(), result.get(contador).getName(), Toast.LENGTH_SHORT).show();
+
+                                        contador = result.size();
+                                    } else {
+                                        contador += 1;
+                                    }
+                                }
+                                contador = 0;
+                                Log.e(" Error: ", "Se termino de cargar pantallas");
+                            }
+                        });
+
+            }
+        });
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(BusquedaClass.this, OrientationHelper.VERTICAL, false);
+
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_equipos);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(adapter);
+    }
+
+
+    public void buscarUsuarios(String palabra) {
+    }
 
     public void onClick(View view) {
         switch (view.getId()) {

@@ -17,12 +17,12 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
+            android:background="@android:color/darker_gray"
             android:bottom="2dp"
             android:left="2dp"
             android:orientation="horizontal"
-            android:paddingTop="4dp"
             android:paddingBottom="4dp"
+            android:paddingTop="4dp"
             android:radius="@android:dimen/dialog_min_width_major"
             android:right="2dp"
             android:top="2dp">
@@ -34,7 +34,7 @@
                 android:layout_weight="1"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:textColor="@android:color/holo_orange_dark" />
+                android:textColor="@android:color/black" />
 
             <ImageView
                 android:id="@id/image"

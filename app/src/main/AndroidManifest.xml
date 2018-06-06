@@ -27,19 +27,19 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name="pantallabusqueda.BusquedaClass"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="portrait"/>
         <activity android:name="pantalladeporte.DeporteClass"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="portrait"/>
         <activity android:name="pantalladeporte.OpcionClass"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="portrait"/>
         <activity android:name="pantallaequipo.EquipoClass"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="portrait"/>
         <activity android:name="pantallahistorial.ResultadoClass"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="portrait"/>
         <activity android:name="pantallaperfil.PerfilClass"
             android:theme="@style/AppTheme.NoActionBar"

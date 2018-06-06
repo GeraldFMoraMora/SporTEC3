@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.IO;
@@ -24,6 +25,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import sportec3.PantallaPrincipal.MainActivity;
 import sportec3.PantallaPrincipal.R;
 
 /**
@@ -89,6 +91,8 @@ public class ChatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        SocketActivity activity = (SocketActivity) getActivity();
+        String mUser = activity.mUser;
         return inflater.inflate(R.layout.fragment_chat, container, false);
     }
 
@@ -130,7 +134,7 @@ public class ChatFragment extends Fragment {
     private void sendMessage(){
         String message = mInputMessageView.getText().toString().trim();
         mInputMessageView.setText("");
-        addMessage(message);
+        addMessage("Yo: "+message);
         JSONObject sendText = new JSONObject();
         try{
             sendText.put("text",message);
@@ -164,7 +168,7 @@ public class ChatFragment extends Fragment {
                     try {
                         message = data.getString("text").toString();
                         Log.e("Mensaje entrante: ",message);
-                        addMessage(message);
+                        addMessage("Otro usuario: "+message);
 
                     } catch (JSONException e) {
                         // return;

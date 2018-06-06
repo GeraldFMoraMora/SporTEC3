@@ -59,17 +59,12 @@ public class MainActivity extends AppCompatActivity
     private CardView mCardView;
 
     private String mEmailUser;
-    private String mNameUser;
-
-    private TextView mUserHeader;
-    private TextView mEmailHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.mEmailUser = getIntent().getStringExtra("email");
-        this.mNameUser = getIntent().getStringExtra("name");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
