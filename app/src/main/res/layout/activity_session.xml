@@ -39,6 +39,13 @@
                         android:layout_height="wrap_content"
                         android:src="@mipmap/registrologo" />
 
+                    <ProgressBar
+                        android:id="@+id/progressBarSession"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+
                     <Space
                         android:layout_width="match_parent"
                         android:layout_height="54dp" />

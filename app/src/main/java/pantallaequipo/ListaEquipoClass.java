@@ -1,6 +1,7 @@
 package pantallaequipo;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,8 +41,21 @@ public class ListaEquipoClass extends AppCompatActivity {
 
         System.out.println("@@@@@@" + mId.toString());
 
+
+
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
         this.list = new ArrayList();
         this.equiposBanner();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
     }
 
     private void equiposBanner() {

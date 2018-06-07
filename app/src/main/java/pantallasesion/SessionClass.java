@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.koushikdutta.async.future.FutureCallback;
 
@@ -32,12 +33,16 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
 
     private static final String TAG = "CustomAuthActivity";
 
+    private ProgressBar mProgressBar;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session);
 
         this.mCorreoEdit = (EditText) findViewById(R.id.usuario_correo_iniciosession_edittext);
         this.mContrasenaEdit = (EditText) findViewById(R.id.usuario_contrasena_inicio_session_edittext);
+        this.mProgressBar = (ProgressBar) findViewById(R.id.progressBarSession);
+        this.mProgressBar.setVisibility(View.GONE);
 
 
     }
@@ -63,7 +68,13 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("email", email);
         intent.putExtra("name", name);
-        startActivity(intent);
+        try{
+            startActivity(intent);
+            this.finish();
+            Thread.sleep(1000);
+        }catch (InterruptedException ex){
+            ex.printStackTrace();
+        }
     }
 
     public void connectAccount(final String email, final String password) {
@@ -111,9 +122,11 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iniciar_session_buttom:
+                this.mProgressBar.setVisibility(View.VISIBLE);
                 connectAccount(mCorreoEdit.getText().toString(), mContrasenaEdit.getText().toString());
                 break;
             case R.id.registrarse_session_buttom:
+                this.mProgressBar.setVisibility(View.VISIBLE);
                 startActivity(new Intent(SessionClass.this, RegistroClass.class));
                 break;
         }

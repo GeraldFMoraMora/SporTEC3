@@ -255,7 +255,14 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_equipos) {
             Intent listaEquipoS = new Intent(this, ListaEquipoClass.class);
-            startActivity(listaEquipoS);
+            try{
+                startActivity(listaEquipoS);
+                Thread.sleep(1000);
+            }catch (InterruptedException ex){
+
+            }
+
+
 
         } else if (id == R.id.nav_search) {
             Intent busquedaS = new Intent(this, BusquedaClass.class);
