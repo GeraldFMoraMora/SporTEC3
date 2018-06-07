@@ -10,7 +10,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import pantallaequipo.EquipoClass;
 import pantallahistorial.ResultadoClass;
 import pantallaretos.TabActivity;
 import sportec3.PantallaPrincipal.R;
@@ -20,7 +19,7 @@ import sportec3.PantallaPrincipal.R;
  * Created by GeraldMM on 05/05/2018.
  */
 
-public class OpcionClass extends AppCompatActivity {
+public class DeporteOpcionClass extends AppCompatActivity {
     private GridView mGridView;
 
     private Intent mScreen;
@@ -43,22 +42,22 @@ public class OpcionClass extends AppCompatActivity {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                Toast.makeText(OpcionClass.this, "" + position,
+                Toast.makeText(DeporteOpcionClass.this, "" + position,
                         Toast.LENGTH_SHORT).show();
 
                 switch (position) {
                     case 0:
-                        mIntent = new Intent(OpcionClass.this, ResultadoClass.class);
+                        mIntent = new Intent(DeporteOpcionClass.this, ResultadoClass.class);
                         mIntent.putExtra("id", mId);
                         startActivity(mIntent);
                         break;
                     case 1:
-                        mIntent = new Intent(OpcionClass.this, EquipoClass.class);
+                        mIntent = new Intent(DeporteOpcionClass.this, DeporteClass.class);
                         mIntent.putExtra("id", mId);
                         startActivity(mIntent);
                         break;
                     case 2:
-                        mIntent = new Intent(OpcionClass.this, TabActivity.class);
+                        mIntent = new Intent(DeporteOpcionClass.this, TabActivity.class);
                         mIntent.putExtra("id", mId);
                         startActivity(mIntent);
                         break;

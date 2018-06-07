@@ -1,5 +1,6 @@
 package pantallaequipo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -35,7 +36,7 @@ public class ListaEquipoClass extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_equipos);
+        setContentView(R.layout.activity_lista_equipos);
 
         this.mId = getIntent().getLongExtra("id", 0);
 
@@ -89,6 +90,9 @@ public class ListaEquipoClass extends AppCompatActivity {
                                 System.out.println(result.size());
                                 while (contador < result.size()) {
                                     if (contador == position) {
+                                        Intent mIntent = new Intent(ListaEquipoClass.this, EquipoClass.class);
+                                        mIntent.putExtra("id", mId);
+                                        startActivity(mIntent);
                                         Toast.makeText(getApplicationContext(), result.get(contador).getName(), Toast.LENGTH_SHORT).show();
 
                                         contador = result.size();

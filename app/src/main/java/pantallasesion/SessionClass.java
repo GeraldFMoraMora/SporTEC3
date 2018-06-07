@@ -68,11 +68,11 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("email", email);
         intent.putExtra("name", name);
-        try{
+        try {
             startActivity(intent);
             this.finish();
             Thread.sleep(1000);
-        }catch (InterruptedException ex){
+        } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
     }

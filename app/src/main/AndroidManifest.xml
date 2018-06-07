@@ -33,11 +33,11 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="pantalladeporte.DeporteClass"
+            android:name="pantalladeporte.DeporteTipoClass"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="pantalladeporte.OpcionClass"
+            android:name="pantalladeporte.DeporteOpcionClass"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
@@ -73,6 +73,7 @@
             android:name="pantallaretos.TabActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+        <activity android:name="pantalladeporte.DeporteClass" />
     </application>
 
 </manifest>

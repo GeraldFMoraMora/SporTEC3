@@ -30,7 +30,7 @@ import model.Noticia;
 import networking.RESTfulClient;
 import pantallabusqueda.BusquedaClass;
 import pantallachat.SocketActivity;
-import pantalladeporte.DeporteClass;
+import pantalladeporte.DeporteTipoClass;
 import pantallaequipo.ListaEquipoClass;
 import pantallahistorial.ResultadoClass;
 import pantallanoticia.NoticiaFragment;
@@ -238,7 +238,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_deportes) {
             // Handle the camera action
-            Intent deporteS = new Intent(this, DeporteClass.class);
+            Intent deporteS = new Intent(this, DeporteTipoClass.class);
             startActivity(deporteS);
         } else if (id == R.id.nav_perfil) {
             Intent perfilS = new Intent(this, PerfilClass.class);

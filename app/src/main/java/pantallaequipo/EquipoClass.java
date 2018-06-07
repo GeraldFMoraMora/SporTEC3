@@ -8,13 +8,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.koushikdutta.async.future.FutureCallback;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Deporte;
+import model.Equipo;
 import model.User;
 import networking.RESTfulClient;
 import sportec3.PantallaPrincipal.R;
@@ -25,7 +29,6 @@ import sportec3.PantallaPrincipal.R;
 
 public class EquipoClass extends AppCompatActivity {
     private Intent mScreen;
-    private Long mId;
     private String mNombreEquipo;
 
     private int contador = 0;
@@ -35,21 +38,42 @@ public class EquipoClass extends AppCompatActivity {
 
     private ArrayList<EquipoModel> list;
 
+    private ImageView mImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipo);
 
-        this.mId = getIntent().getLongExtra("id", 0);
-
-        System.out.println("@@@@@@" + mId.toString());
+        this.mNombreEquipo = getIntent().getStringExtra("name");
 
         this.mNombreEquipoView = (TextView) findViewById(R.id.nombre_equipo_layout_equipo_textview);
-        this.setmNombreDeporte();
 
         this.mNombreEquipoView.setText(this.mNombreEquipo);
 
+        this.mImage = (ImageView) findViewById(R.id.foto_equipo_imageview);
+
         this.list = new ArrayList();
+        RESTfulClient
+                .with(getApplicationContext())
+                .getAllEquipos(new FutureCallback<List<Equipo>>() {
+                    @Override
+                    public void onCompleted(Exception e, List<Equipo> result) {
+                        System.out.println(result.size());
+                        while (contador < result.size()) {
+                            if (result.get(contador).getName().equals(mNombreEquipo)){
+                                Log.e("Esto es lo que pasa: ",result.get(contador).getPhoto());
+                                Picasso.get().load(result.get(contador).getPhoto()).into(mImage);
+                                contador=result.size();
+                            }else{
+                                contador += 1;
+                            }
+                            Log.e(" No se encontro: ", " Nunca se encontro deporte");
+                        }
+                        contador = 0;
+
+                    }
+                });
 
         RESTfulClient
                 .with(getApplicationContext())
@@ -72,56 +96,5 @@ public class EquipoClass extends AppCompatActivity {
                         Log.e(" Error: ", "Cuenta inexistente");
                     }
                 });
-    }
-
-    /**
-     * Este metodo obtiene el id del objeto seleccionado y le asigna un nombre para ser identificado de manera
-     * sencilla.
-     */
-    private void setmNombreDeporte() {
-        switch (mId.intValue()) {
-            case 0:
-                this.mNombreEquipo = "Artes marciales";
-                break;
-            case 1:
-                this.mNombreEquipo = "Atletismo";
-                break;
-            case 2:
-                this.mNombreEquipo = "Badminton";
-                break;
-            case 3:
-                this.mNombreEquipo = "Balon mano";
-                break;
-            case 4:
-                this.mNombreEquipo = "Baseball";
-                break;
-            case 5:
-                this.mNombreEquipo = "Basketball";
-                break;
-            case 6:
-                this.mNombreEquipo = "Ciclismo";
-                break;
-            case 7:
-                this.mNombreEquipo = "Levantamiento de pesas";
-                break;
-            case 8:
-                this.mNombreEquipo = "Futball";
-                break;
-            case 9:
-                this.mNombreEquipo = "Kayak";
-                break;
-            case 10:
-                this.mNombreEquipo = "Ping pong";
-                break;
-            case 11:
-                this.mNombreEquipo = "Esgrima";
-                break;
-            case 12:
-                this.mNombreEquipo = "Tennis";
-                break;
-            case 13:
-                this.mNombreEquipo = "Volleyball";
-                break;
-        }
     }
 }
