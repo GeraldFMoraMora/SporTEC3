@@ -2,7 +2,6 @@ package pantallaequipo;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,7 +100,7 @@ public class LEMainAdapter extends RecyclerView.Adapter implements ConstantInter
         if (object != null) {
             switch (object.type) {
                 case EquipoModel.IMAGE_TYPE:
-                    ganados = (Integer.decode(object.win.toString()+"").intValue()*3)+(Integer.decode(object.tie.toString()+"").intValue()*1);
+                    ganados = (Integer.decode(object.win.toString() + "").intValue() * 3) + (Integer.decode(object.tie.toString() + "").intValue() * 1);
                     ((LEMainAdapter.ImageTypeViewHolder) holder).titulo.setText(object.text);
                     Picasso
                             .get()

@@ -10,8 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import sportec3.PantallaPrincipal.R;
@@ -21,16 +19,7 @@ import sportec3.PantallaPrincipal.R;
  */
 
 public class DeporteTipoClass extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private GridView mGridView;
-
-    private Intent mScreen;
     private Toolbar mToolbar;
-    private ImageView mLogoNav;
-
-    private ImageView mImagenNoticia;
-    private TextView MTituloNoticia;
-
-    private String mId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -17,7 +17,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Deporte;
 import model.Equipo;
 import model.User;
 import networking.RESTfulClient;
@@ -61,11 +60,11 @@ public class EquipoClass extends AppCompatActivity {
                     public void onCompleted(Exception e, List<Equipo> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            if (result.get(contador).getName().equals(mNombreEquipo)){
-                                Log.e("Esto es lo que pasa: ",result.get(contador).getPhoto());
+                            if (result.get(contador).getName().equals(mNombreEquipo)) {
+                                Log.e("Esto es lo que pasa: ", result.get(contador).getPhoto());
                                 Picasso.get().load(result.get(contador).getPhoto()).into(mImage);
-                                contador=result.size();
-                            }else{
+                                contador = result.size();
+                            } else {
                                 contador += 1;
                             }
                             Log.e(" No se encontro: ", " Nunca se encontro deporte");
@@ -82,7 +81,7 @@ public class EquipoClass extends AppCompatActivity {
                     public void onCompleted(Exception e, List<User> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), "https://firebasestorage.googleapis.com/v0/b/sportec-cf3d1.appspot.com/o/usuarios%2Fuserlogo.png?alt=media&token=83b0e50e-9a87-477e-8695-6c60fb23cf64", "https://firebasestorage.googleapis.com/v0/b/sportec-cf3d1.appspot.com/o/usuarios%2Fuserlogo.png?alt=media&token=83b0e50e-9a87-477e-8695-6c60fb23cf64","","",""));
+                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), "https://firebasestorage.googleapis.com/v0/b/sportec-cf3d1.appspot.com/o/usuarios%2Fuserlogo.png?alt=media&token=83b0e50e-9a87-477e-8695-6c60fb23cf64", "https://firebasestorage.googleapis.com/v0/b/sportec-cf3d1.appspot.com/o/usuarios%2Fuserlogo.png?alt=media&token=83b0e50e-9a87-477e-8695-6c60fb23cf64", "", "", ""));
                             contador += 1;
                         }
                         contador = 0;

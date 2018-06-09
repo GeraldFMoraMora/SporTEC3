@@ -141,10 +141,10 @@ public class DeporteClass extends AppCompatActivity {
         mRecyclerView.setAdapter(adapter);
     }
 
-    public void onClick(View view){
-        switch (view.getId()){
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.button_miembro_agregar:
-                Intent registro = new Intent(this,RegistroEquipoClass.class);
+                Intent registro = new Intent(this, RegistroEquipoClass.class);
                 startActivity(registro);
                 break;
         }

@@ -11,10 +11,6 @@ import android.widget.Toast;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
-import java.util.List;
-
-import model.User;
-import networking.RESTfulClient;
 import sportec3.PantallaPrincipal.R;
 
 /**
@@ -45,15 +41,15 @@ public class RegistroEquipoClass extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.equipo_registro_buttom:
-                createAccount(mName.getText().toString(),mPhoto.getText().toString(),
-                        mWin.getText().toString(),mLost.getText().toString(),mTie.getText().toString());
-                try{
+                createAccount(mName.getText().toString(), mPhoto.getText().toString(),
+                        mWin.getText().toString(), mLost.getText().toString(), mTie.getText().toString());
+                try {
                     Intent deporte = new Intent(this, DeporteOpcionClass.class);
                     startActivity(deporte);
                     Thread.sleep(1000);
-                }catch(InterruptedException ex){
+                } catch (InterruptedException ex) {
 
-            }
+                }
 
                 break;
         }
@@ -78,7 +74,8 @@ public class RegistroEquipoClass extends AppCompatActivity {
                     }
                 });
     }
-    public void onBackPressed(){
+
+    public void onBackPressed() {
         Intent deporte = new Intent(this, DeporteOpcionClass.class);
         startActivity(deporte);
     }

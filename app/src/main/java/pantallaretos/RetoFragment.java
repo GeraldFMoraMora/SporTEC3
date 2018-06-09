@@ -19,7 +19,6 @@ import com.koushikdutta.async.future.FutureCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Resultado;
 import model.Reto;
 import networking.RESTfulClient;
 import pantallaequipo.EquipoModel;
