@@ -22,7 +22,6 @@ import java.util.List;
 import model.Deporte;
 import model.Equipo;
 import networking.RESTfulClient;
-import pantallaequipo.EquipoAdapter;
 import pantallaequipo.EquipoClass;
 import pantallaequipo.EquipoModel;
 import pantallaequipo.LEMainAdapter;
@@ -69,11 +68,11 @@ public class DeporteClass extends AppCompatActivity {
                     public void onCompleted(Exception e, List<Deporte> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            if (result.get(contador).getName().equals(mNombreDeporte)){
-                                Log.e("Esto es lo que pasa: ",result.get(contador).getPhoto());
+                            if (result.get(contador).getName().equals(mNombreDeporte)) {
+                                Log.e("Esto es lo que pasa: ", result.get(contador).getPhoto());
                                 Picasso.get().load(result.get(contador).getPhoto()).into(mImage);
-                                contador=result.size();
-                            }else{
+                                contador = result.size();
+                            } else {
                                 contador += 1;
                             }
                             Log.e(" No se encontro: ", " Nunca se encontro deporte");
@@ -95,7 +94,7 @@ public class DeporteClass extends AppCompatActivity {
                     public void onCompleted(Exception e, List<Equipo> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto(),result.get(contador).getWin(),result.get(contador).getLost(),result.get(contador).getTie()));
+                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto(), result.get(contador).getWin(), result.get(contador).getLost(), result.get(contador).getTie()));
                             contador += 1;
                         }
                         contador = 0;
@@ -140,6 +139,15 @@ public class DeporteClass extends AppCompatActivity {
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(adapter);
+    }
+
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.button_miembro_agregar:
+                Intent registro = new Intent(this,RegistroEquipoClass.class);
+                startActivity(registro);
+                break;
+        }
     }
 
     /**

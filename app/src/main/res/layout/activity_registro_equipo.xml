@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right|center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/registrologo" />
+
+            <Button
+                android:id="@+id/equipo_registro_buttom"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:onClick="onClick"
+                android:text="+ Agregar Equipo" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/equipo_nombre_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Nombre de equipo"
+                        android:inputType="textPersonName"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="20dp" />
+
+                    <EditText
+                        android:id="@+id/equipo_foto_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="URL fotografia"
+                        android:inputType="textPersonName"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="20dp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:ems="10"
+                        android:enabled="false"
+                        android:hint="Deporte"
+                        android:inputType="textPersonName"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="20dp"
+                        android:text="Futball" />
+
+                    <EditText
+                        android:id="@+id/equipo_ganadas_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Partidas ganadas"
+                        android:inputType="textPersonName"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="20dp" />
+
+                    <EditText
+                        android:id="@+id/equipo_perdidas_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Partidas perdidas"
+                        android:inputType="textPersonName"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="20dp" />
+
+                    <EditText
+                        android:id="@+id/equipo_empatadas_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Partidas empatadas"
+                        android:inputType="textPersonName"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="20dp" />
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
