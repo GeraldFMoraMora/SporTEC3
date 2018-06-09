@@ -10,6 +10,9 @@ public class Equipo implements Serializable {
     private String name;
     private String sport;
     private String photo;
+    private String win;
+    private String lost;
+    private String tie;
 
     @Override
     public String toString() {
@@ -38,5 +41,29 @@ public class Equipo implements Serializable {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getWin() {
+        return win;
+    }
+
+    public void setWin(String win) {
+        this.win = win;
+    }
+
+    public String getLost() {
+        return lost;
+    }
+
+    public void setLost(String lost) {
+        this.lost = lost;
+    }
+
+    public String getTie() {
+        return tie;
+    }
+
+    public void setTie(String tie) {
+        this.tie = tie;
     }
 }

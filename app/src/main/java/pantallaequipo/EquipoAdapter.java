@@ -26,14 +26,20 @@ public class EquipoAdapter extends RecyclerView.Adapter {
 
     public static class ImageTypeViewHolder extends RecyclerView.ViewHolder {
 
-        TextView titulo;
+        TextView mTitulo;
         ImageView mImage;
+        TextView mWin;
+        TextView mLost;
+        TextView mTie;
 
         public ImageTypeViewHolder(View itemView) {
             super(itemView);
 
-            this.titulo = (TextView) itemView.findViewById(R.id.textview_equipos);
+            this.mTitulo = (TextView) itemView.findViewById(R.id.textview_equipos);
             this.mImage = (ImageView) itemView.findViewById(R.id.imageview_equipos_foto);
+            this.mWin = (TextView) itemView.findViewById(R.id.win_textView);
+            this.mLost = (TextView) itemView.findViewById(R.id.lost_textView);
+            this.mTie = (TextView) itemView.findViewById(R.id.tie_textView);
         }
     }
 
@@ -99,8 +105,11 @@ public class EquipoAdapter extends RecyclerView.Adapter {
         if (object != null) {
             switch (object.type) {
                 case EquipoModel.IMAGE_TYPE:
-                    ((ImageTypeViewHolder) holder).titulo.setText(object.text);
+                    ((ImageTypeViewHolder) holder).mTitulo.setText(object.text);
                     Picasso.get().load(object.foto).into(((ImageTypeViewHolder) holder).mImage);
+                    ((ImageTypeViewHolder) holder).mWin.setText(object.win);
+                    ((ImageTypeViewHolder) holder).mLost.setText(object.lost);
+                    ((ImageTypeViewHolder) holder).mTie.setText(object.tie);
                     break;
             }
         }

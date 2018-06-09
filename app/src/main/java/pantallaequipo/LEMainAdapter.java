@@ -36,11 +36,17 @@ public class LEMainAdapter extends RecyclerView.Adapter implements ConstantInter
 
         TextView titulo;
         ImageView mImage;
+        TextView mWin;
+        TextView mLost;
+        TextView mTie;
 
         public ImageTypeViewHolder(View itemView) {
             super(itemView);
             this.titulo = (TextView) itemView.findViewById(R.id.textview_equipos);
             this.mImage = (ImageView) itemView.findViewById(R.id.imageview_equipos_foto);
+            this.mWin = (TextView) itemView.findViewById(R.id.win_textView);
+            this.mLost = (TextView) itemView.findViewById(R.id.lost_textView);
+            this.mTie = (TextView) itemView.findViewById(R.id.tie_textView);
             itemView.setOnClickListener(this);
         }
 
@@ -95,6 +101,10 @@ public class LEMainAdapter extends RecyclerView.Adapter implements ConstantInter
                             .load(object.foto)
                             .resize(72, 72)
                             .into(((LEMainAdapter.ImageTypeViewHolder) holder).mImage);
+
+                    ((LEMainAdapter.ImageTypeViewHolder) holder).mWin.setText(object.win);
+                    ((LEMainAdapter.ImageTypeViewHolder) holder).mLost.setText(object.lost);
+                    ((LEMainAdapter.ImageTypeViewHolder) holder).mTie.setText(object.tie);
                     break;
             }
         }

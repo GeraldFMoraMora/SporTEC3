@@ -5,5 +5,5 @@ package networking;
  */
 
 public interface ServerConstants {
-    String SERVER = "http://192.168.0.15:3000";
+    String SERVER = "http://192.168.43.204:3000";
 }

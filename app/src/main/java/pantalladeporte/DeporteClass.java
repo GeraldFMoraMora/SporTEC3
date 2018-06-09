@@ -95,7 +95,7 @@ public class DeporteClass extends AppCompatActivity {
                     public void onCompleted(Exception e, List<Equipo> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto()));
+                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto(),result.get(contador).getWin(),result.get(contador).getLost(),result.get(contador).getTie()));
                             contador += 1;
                         }
                         contador = 0;
