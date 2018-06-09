@@ -2,6 +2,7 @@ package pantallaequipo;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class LEMainAdapter extends RecyclerView.Adapter implements ConstantInter
         TextView mWin;
         TextView mLost;
         TextView mTie;
+        TextView mPuntaje;
 
         public ImageTypeViewHolder(View itemView) {
             super(itemView);
@@ -47,6 +49,7 @@ public class LEMainAdapter extends RecyclerView.Adapter implements ConstantInter
             this.mWin = (TextView) itemView.findViewById(R.id.win_textView);
             this.mLost = (TextView) itemView.findViewById(R.id.lost_textView);
             this.mTie = (TextView) itemView.findViewById(R.id.tie_textView);
+            this.mPuntaje = (TextView) itemView.findViewById(R.id.puntaje_textView);
             itemView.setOnClickListener(this);
         }
 
@@ -90,11 +93,15 @@ public class LEMainAdapter extends RecyclerView.Adapter implements ConstantInter
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int listPosition) {
+        Integer ganados = 0;
+        Integer perdidos = 0;
+        Integer empatados = 0;
 
         EquipoModel object = dataSet.get(listPosition);
         if (object != null) {
             switch (object.type) {
                 case EquipoModel.IMAGE_TYPE:
+                    ganados = (Integer.decode(object.win.toString()+"").intValue()*3)+(Integer.decode(object.tie.toString()+"").intValue()*1);
                     ((LEMainAdapter.ImageTypeViewHolder) holder).titulo.setText(object.text);
                     Picasso
                             .get()
@@ -102,9 +109,10 @@ public class LEMainAdapter extends RecyclerView.Adapter implements ConstantInter
                             .resize(72, 72)
                             .into(((LEMainAdapter.ImageTypeViewHolder) holder).mImage);
 
-                    ((LEMainAdapter.ImageTypeViewHolder) holder).mWin.setText(object.win);
-                    ((LEMainAdapter.ImageTypeViewHolder) holder).mLost.setText(object.lost);
-                    ((LEMainAdapter.ImageTypeViewHolder) holder).mTie.setText(object.tie);
+                    ((LEMainAdapter.ImageTypeViewHolder) holder).mWin.setText("Partidos ganados: " + object.win);
+                    ((LEMainAdapter.ImageTypeViewHolder) holder).mLost.setText("Partidos perdidos: " + object.lost);
+                    ((LEMainAdapter.ImageTypeViewHolder) holder).mTie.setText("Partidos empatados: " + object.tie);
+                    ((ImageTypeViewHolder) holder).mPuntaje.setText(ganados.toString());
                     break;
             }
         }

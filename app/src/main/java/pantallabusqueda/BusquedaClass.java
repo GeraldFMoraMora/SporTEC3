@@ -145,7 +145,7 @@ public class BusquedaClass extends AppCompatActivity {
                         System.out.println(result.size());
                         while (contador < result.size()) {
                             if (result.get(contador).getName().contains(mEntryBusqueda.getText().toString())) {
-                                list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto(),result.get(contador).getWin(),result.get(contador).getLost(),result.get(contador).getTie()));
+                                list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto(), result.get(contador).getWin(), result.get(contador).getLost(), result.get(contador).getTie()));
                             }
                             contador += 1;
                         }
@@ -186,10 +186,6 @@ public class BusquedaClass extends AppCompatActivity {
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(adapter);
-    }
-
-
-    public void buscarUsuarios() {
     }
 
     public void onClick(View view) {
