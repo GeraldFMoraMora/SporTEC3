@@ -93,14 +93,14 @@ public class RESTfulClient implements ServerConstants {
 
     public void getRetoById(FutureCallback<String> callback) {
         Ion.with(this.mApplication)
-                .load(SERVER + "/api/activity_retos/")
+                .load(SERVER + "/api/retos/")
                 .asString()
                 .setCallback(callback);
     }
 
     public void getAllRetos(FutureCallback<List<Reto>> callback) {
         Ion.with(this.mApplication)
-                .load(SERVER + "/api/activity_retos/")
+                .load(SERVER + "/api/retos/")
                 .as(new TypeToken<List<Reto>>() {
                 })
                 .setCallback(callback);

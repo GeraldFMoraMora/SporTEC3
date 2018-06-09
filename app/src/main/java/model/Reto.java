@@ -8,8 +8,11 @@ import java.io.Serializable;
 
 public class Reto implements Serializable {
     private String name;
+    private String result;
     private String team1;
     private String team2;
+    private String foto1;
+    private String foto2;
 
     public String getName() {
         return name;
@@ -38,5 +41,29 @@ public class Reto implements Serializable {
     @Override
     public String toString() {
         return "Equipo: " + getName() + " equipo 1: " + getTeam1() + " equipo 2:" + getTeam2();
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public String getFoto1() {
+        return foto1;
+    }
+
+    public void setFoto1(String foto1) {
+        this.foto1 = foto1;
+    }
+
+    public String getFoto2() {
+        return foto2;
+    }
+
+    public void setFoto2(String foto2) {
+        this.foto2 = foto2;
     }
 }

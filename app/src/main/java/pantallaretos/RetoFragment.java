@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Resultado;
+import model.Reto;
 import networking.RESTfulClient;
 import pantallaequipo.EquipoModel;
 import pantallahistorial.ResultadoAdapter;
@@ -50,9 +51,9 @@ public class RetoFragment extends Fragment {
         final ArrayList<ResultadoModel> list = new ArrayList();
         RESTfulClient
                 .with(view.getContext().getApplicationContext())
-                .getAllResultados(new FutureCallback<List<Resultado>>() {
+                .getAllRetos(new FutureCallback<List<Reto>>() {
                     @Override
-                    public void onCompleted(Exception e, List<Resultado> result) {
+                    public void onCompleted(Exception e, List<Reto> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
                             list.add(new ResultadoModel(ResultadoModel.IMAGE_TYPE,
