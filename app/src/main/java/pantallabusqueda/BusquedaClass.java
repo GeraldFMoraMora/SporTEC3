@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.koushikdutta.async.future.FutureCallback;
 
@@ -23,7 +22,6 @@ import networking.RESTfulClient;
 import pantallaequipo.EquipoClass;
 import pantallaequipo.EquipoModel;
 import pantallaequipo.LEMainAdapter;
-import pantallaequipo.ListaEquipoClass;
 import pantallanoticia.NoticiaMainAdapter;
 import pantallanoticia.NoticiaMainModel;
 import sportec3.PantallaPrincipal.ConstantInterface;
