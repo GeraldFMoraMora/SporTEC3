@@ -73,10 +73,12 @@
             android:name="pantallaretos.TabActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name="pantalladeporte.DeporteClass"
+        <activity
+            android:name="pantalladeporte.DeporteClass"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name="pantalladeporte.RegistroEquipoClass"
+        <activity
+            android:name="pantalladeporte.RegistroEquipoClass"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
     </application>

@@ -8,9 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.koushikdutta.async.future.FutureCallback;
 
@@ -43,7 +41,6 @@ public class ListaEquipoClass extends AppCompatActivity {
         System.out.println("@@@@@@" + mId.toString());
 
 
-
     }
 
     @Override
@@ -68,11 +65,10 @@ public class ListaEquipoClass extends AppCompatActivity {
                     public void onCompleted(Exception e, List<Equipo> result) {
                         System.out.println(result.size());
                         while (contador < result.size()) {
-                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto(),result.get(contador).getWin(),result.get(contador).getLost(),result.get(contador).getTie()));
+                            list.add(new EquipoModel(EquipoModel.IMAGE_TYPE, result.get(contador).getName(), result.get(contador).getSport(), result.get(contador).getPhoto(), result.get(contador).getWin(), result.get(contador).getLost(), result.get(contador).getTie()));
                             contador += 1;
                         }
                         contador = 0;
-                        Log.e(" Error: ", "No existe noticia destacada");
                     }
                 });
         LEMainAdapter adapter = new LEMainAdapter(list, ListaEquipoClass.this, new ConstantInterface() {
@@ -91,9 +87,8 @@ public class ListaEquipoClass extends AppCompatActivity {
                                 while (contador < result.size()) {
                                     if (contador == position) {
                                         Intent mIntent = new Intent(ListaEquipoClass.this, EquipoClass.class);
-                                        mIntent.putExtra("id", mId);
+                                        mIntent.putExtra("name", result.get(contador).getName().toString());
                                         startActivity(mIntent);
-                                        Toast.makeText(getApplicationContext(), result.get(contador).getName(), Toast.LENGTH_SHORT).show();
 
                                         contador = result.size();
                                     } else {
@@ -101,7 +96,6 @@ public class ListaEquipoClass extends AppCompatActivity {
                                     }
                                 }
                                 contador = 0;
-                                Log.e(" Error: ", "Se termino de cargar pantallas");
                             }
                         });
 
