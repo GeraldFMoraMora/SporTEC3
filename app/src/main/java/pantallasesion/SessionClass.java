@@ -31,8 +31,6 @@ public class SessionClass extends AppCompatActivity implements ConstantInterface
 
     private int contador = 0;
 
-    private static final String TAG = "CustomAuthActivity";
-
     private ProgressBar mProgressBar;
 
     protected void onCreate(Bundle savedInstanceState) {

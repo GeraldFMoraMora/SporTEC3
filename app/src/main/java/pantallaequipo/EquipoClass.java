@@ -1,6 +1,5 @@
 package pantallaequipo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -27,7 +26,6 @@ import sportec3.PantallaPrincipal.R;
  */
 
 public class EquipoClass extends AppCompatActivity {
-    private Intent mScreen;
     private String mNombreEquipo;
 
     private int contador = 0;
@@ -67,7 +65,6 @@ public class EquipoClass extends AppCompatActivity {
                             } else {
                                 contador += 1;
                             }
-                            Log.e(" No se encontro: ", " Nunca se encontro deporte");
                         }
                         contador = 0;
 
@@ -92,7 +89,6 @@ public class EquipoClass extends AppCompatActivity {
                         mRecyclerView.setLayoutManager(linearLayoutManager);
                         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
                         mRecyclerView.setAdapter(adapter);
-                        Log.e(" Error: ", "Cuenta inexistente");
                     }
                 });
     }

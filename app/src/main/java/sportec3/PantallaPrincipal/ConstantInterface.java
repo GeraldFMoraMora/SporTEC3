@@ -7,7 +7,6 @@ import android.view.View;
  */
 
 public interface ConstantInterface {
-    public static final int REQUEST_CODE = 777;
 
     void onClick(View v, int position);
 }

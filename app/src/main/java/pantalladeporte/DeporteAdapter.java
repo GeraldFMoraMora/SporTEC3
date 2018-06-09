@@ -50,11 +50,8 @@ public class DeporteAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) mContext
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.layout_grid_item, parent, false);
-            // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-            //imageView.setLayoutParams(new ViewGroup.LayoutParams(85, 85));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            //imageView.setPadding(8, 8, 8, 8);
             textView = new TextView(mContext);
             textView.setText("gerald");
         }

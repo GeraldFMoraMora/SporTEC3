@@ -3,11 +3,9 @@ package pantalladeporte;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import pantallahistorial.ResultadoClass;
@@ -20,11 +18,6 @@ import sportec3.PantallaPrincipal.R;
  */
 
 public class DeporteOpcionClass extends AppCompatActivity {
-    private GridView mGridView;
-
-    private Intent mScreen;
-    private Toolbar mToolbar;
-    private ImageView mLogoNav;
 
     private Long mId;
     private Intent mIntent;

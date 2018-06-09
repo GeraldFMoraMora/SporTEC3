@@ -28,7 +28,6 @@ import sportec3.PantallaPrincipal.R;
 
 
 public class RetoFragment extends Fragment {
-    private Long mId;
     private int contador = 0;
 
     private ArrayList<EquipoModel> list;
@@ -74,10 +73,6 @@ public class RetoFragment extends Fragment {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(adapter);
         return view;
-    }
-
-    private void retosBanner() {
-
     }
 
 }

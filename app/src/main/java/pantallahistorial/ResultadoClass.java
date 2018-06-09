@@ -46,7 +46,6 @@ public class ResultadoClass extends FragmentActivity {
                             contador += 1;
                         }
                         contador = 0;
-                        Log.e(" Error: ", "Cuenta inexistente");
                     }
                 });
 

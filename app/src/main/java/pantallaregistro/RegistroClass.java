@@ -22,10 +22,6 @@ public class RegistroClass extends AppCompatActivity implements View.OnClickList
     private EditText mNombreEdit;
     private EditText mCorreoEdit;
     private EditText mContrasenaEdit;
-    private String mUserId;
-
-    private static final String TAG = "CustomAuthActivity";
-    private String mCustomToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +57,7 @@ public class RegistroClass extends AppCompatActivity implements View.OnClickList
      */
     public void createAccount(String name, String email, String password) {
         Ion.with(this)
-                .load("http://192.168.0.15:3000/api/usuarios/")
+                .load("http://192.168.43.204:3000/api/usuarios/")
                 .setBodyParameter("name", name)
                 .setBodyParameter("email", email)
                 .setBodyParameter("pass", password)

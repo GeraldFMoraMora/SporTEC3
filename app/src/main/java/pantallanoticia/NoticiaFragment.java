@@ -31,13 +31,6 @@ public class NoticiaFragment extends Fragment {
     private static final String ARG_PARAM3 = "param3";
 
     // TODO: Rename and change types of parameters
-    private String mTitulo;
-    private String mFoto;
-    private String mDescripcion;
-    private boolean dia;
-
-
-    private TextView mRegisterTextView;
 
     private OnFragmentInteractionListener mListener;
 

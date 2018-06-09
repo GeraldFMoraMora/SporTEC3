@@ -19,7 +19,6 @@ import sportec3.PantallaPrincipal.R;
 
 public class RegistroEquipoClass extends AppCompatActivity {
 
-    private int contador = 0;
     private EditText mName;
     private EditText mPhoto;
     private EditText mWin;
@@ -69,7 +68,7 @@ public class RegistroEquipoClass extends AppCompatActivity {
                     @Override
                     public void onCompleted(Exception e, String result) {
                         // do stuff with the result or error
-                        Log.e(" Exito: ", "Equipo correctamente creado");
+                        Log.i(" Exito: ", "Equipo correctamente creado");
                         Toast.makeText(RegistroEquipoClass.this, "Equipo correctamente creado", Toast.LENGTH_SHORT).show();
                     }
                 });

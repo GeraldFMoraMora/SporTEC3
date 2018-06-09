@@ -7,7 +7,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,7 +32,6 @@ import sportec3.PantallaPrincipal.R;
  */
 
 public class DeporteClass extends AppCompatActivity {
-    private Intent mScreen;
     private Long mId;
     private String mNombreDeporte;
 
@@ -69,13 +67,11 @@ public class DeporteClass extends AppCompatActivity {
                         System.out.println(result.size());
                         while (contador < result.size()) {
                             if (result.get(contador).getName().equals(mNombreDeporte)) {
-                                Log.e("Esto es lo que pasa: ", result.get(contador).getPhoto());
                                 Picasso.get().load(result.get(contador).getPhoto()).into(mImage);
                                 contador = result.size();
                             } else {
                                 contador += 1;
                             }
-                            Log.e(" No se encontro: ", " Nunca se encontro deporte");
                         }
                         contador = 0;
 
@@ -98,7 +94,6 @@ public class DeporteClass extends AppCompatActivity {
                             contador += 1;
                         }
                         contador = 0;
-                        Log.e(" Error: ", "No existe noticia destacada");
                     }
                 });
         LEMainAdapter adapter = new LEMainAdapter(list, DeporteClass.this, new ConstantInterface() {
@@ -127,7 +122,6 @@ public class DeporteClass extends AppCompatActivity {
                                     }
                                 }
                                 contador = 0;
-                                Log.e(" Error: ", "Se termino de cargar pantallas");
                             }
                         });
 

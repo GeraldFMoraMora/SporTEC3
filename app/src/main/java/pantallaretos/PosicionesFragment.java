@@ -10,7 +10,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +60,6 @@ public class PosicionesFragment extends Fragment {
                             contador += 1;
                         }
                         contador = 0;
-                        Log.e(" Error: ", "No existe noticia destacada");
                     }
                 });
         LEMainAdapter adapter = new LEMainAdapter(list, view.getContext(), new ConstantInterface() {
@@ -87,7 +85,6 @@ public class PosicionesFragment extends Fragment {
                                     }
                                 }
                                 contador = 0;
-                                Log.e(" Error: ", "Se termino de cargar pantallas");
                             }
                         });
 
